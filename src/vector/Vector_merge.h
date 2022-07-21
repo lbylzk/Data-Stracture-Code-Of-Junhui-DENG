@@ -8,20 +8,20 @@
 
 #pragma once
 
-template <typename T> //ÓĞĞòÏòÁ¿£¨Çø¼ä£©µÄ¹é²¢
+template <typename T> //æœ‰åºå‘é‡ï¼ˆåŒºé—´ï¼‰çš„å½’å¹¶
 void Vector<T>::merge(Rank lo, Rank mi, Rank hi)
-{ //[lo, mi)ºÍ[mi, hi)¸÷×ÔÓĞĞò£¬lo < mi < hi
+{ //[lo, mi)å’Œ[mi, hi)å„è‡ªæœ‰åºï¼Œlo < mi < hi
    Rank i = 0;
-   T *A = _elem + lo; //ºÏ²¢ºóµÄÓĞĞòÏòÁ¿A[0, hi - lo) = _elem[lo, hi)£¬¾ÍµØ
+   T *A = _elem + lo; //åˆå¹¶åçš„æœ‰åºå‘é‡A[0, hi - lo) = _elem[lo, hi)ï¼Œå°±åœ°
    Rank j = 0, lb = mi - lo;
-   T *B = new T[lb]; //Ç°×ÓÏòÁ¿B[0, lb) <-- _elem[lo, mi)
+   T *B = new T[lb]; //å‰å­å‘é‡B[0, lb) <-- _elem[lo, mi)
    for (Rank i = 0; i < lb; i++)
-      B[i] = A[i]; //¸´ÖÆ×ÔAµÄÇ°×º
+      B[i] = A[i]; //å¤åˆ¶è‡ªAçš„å‰ç¼€
    Rank k = 0, lc = hi - mi;
-   T *C = _elem + mi;                            //ºó×ÓÏòÁ¿C[0, lc) = _elem[mi, hi)£¬¾ÍµØ
-   while ((j < lb) && (k < lc))                  //·´¸´µØ±È½ÏB¡¢CµÄÊ×ÔªËØ
-      A[i++] = (B[j] <= C[k]) ? B[j++] : C[k++]; //½«¸üĞ¡Õß¹éÈëAÖĞ
-   while (j < lb)                                //ÈôCÏÈºÄ¾¡£¬Ôò
-      A[i++] = B[j++];                           //½«B²ĞÓàµÄºó×º¹éÈëAÖĞ¡ª¡ªÈôBÏÈºÄ¾¡ÄØ£¿
-   delete[] B;                                   //ÊÍ·ÅÁÙÊ±¿Õ¼ä£ºmergeSort()¹ı³ÌÖĞ£¬ÈçºÎ±ÜÃâ´ËÀà·´¸´µÄnew/delete£¿
+   T *C = _elem + mi;                            //åå­å‘é‡C[0, lc) = _elem[mi, hi)ï¼Œå°±åœ°
+   while ((j < lb) && (k < lc))                  //åå¤åœ°æ¯”è¾ƒBã€Cçš„é¦–å…ƒç´ 
+      A[i++] = (B[j] <= C[k]) ? B[j++] : C[k++]; //å°†æ›´å°è€…å½’å…¥Aä¸­
+   while (j < lb)                                //è‹¥Cå…ˆè€—å°½ï¼Œåˆ™
+      A[i++] = B[j++];                           //å°†Bæ®‹ä½™çš„åç¼€å½’å…¥Aä¸­â€”â€”è‹¥Bå…ˆè€—å°½å‘¢ï¼Ÿ
+   delete[] B;                                   //é‡Šæ”¾ä¸´æ—¶ç©ºé—´ï¼šmergeSort()è¿‡ç¨‹ä¸­ï¼Œå¦‚ä½•é¿å…æ­¤ç±»åå¤çš„new/deleteï¼Ÿ
 }

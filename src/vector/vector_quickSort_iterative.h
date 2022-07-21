@@ -22,7 +22,7 @@
       s = K.pop();   \
    }
 
-template <typename T> //ÏòÁ¿¿ìËÙÅÅĞò
+template <typename T> //å‘é‡å¿«é€Ÿæ’åº
 void Vector<T>::quickSort(Rank lo, Rank hi)
 { // 0 <= lo < hi <= size
    Stack<Rank> Task;
@@ -31,7 +31,7 @@ void Vector<T>::quickSort(Rank lo, Rank hi)
    {
       Get(Task, lo, hi);
       /* DSA */                    // printf ( "\tQUICKsort: " ); for ( Rank i = 0; i < Task.size(); i+=2 ) printf ( " " ); printf ( " [%3d, %3d)\n", lo, hi );
-      Rank mi = partition(lo, hi); //ÔÚ[lo, hi)ÄÚ¹¹ÔìÖáµã
+      Rank mi = partition(lo, hi); //åœ¨[lo, hi)å†…æ„é€ è½´ç‚¹
       if (mi - lo < hi - mi)
       {
          Put(Task, mi + 1, hi);
@@ -42,5 +42,5 @@ void Vector<T>::quickSort(Rank lo, Rank hi)
          Put(Task, lo, mi);
          Put(Task, mi + 1, hi);
       }
-   } //´óÈÎÎñÓÅÏÈÈëÕ»£¨Ğ¡ÈÎÎñÓÅÏÈ³öÕ»Ö´ĞĞ£©£¬¿É±£Ö¤µİ¹éÉî¶È£¨¿Õ¼ä³É±¾£©²»¹ıO(logn)
+   } //å¤§ä»»åŠ¡ä¼˜å…ˆå…¥æ ˆï¼ˆå°ä»»åŠ¡ä¼˜å…ˆå‡ºæ ˆæ‰§è¡Œï¼‰ï¼Œå¯ä¿è¯é€’å½’æ·±åº¦ï¼ˆç©ºé—´æˆæœ¬ï¼‰ä¸è¿‡O(logn)
 }

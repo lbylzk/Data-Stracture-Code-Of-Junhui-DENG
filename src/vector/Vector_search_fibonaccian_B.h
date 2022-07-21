@@ -8,20 +8,20 @@
 
 #pragma once
 
-#include "fibonacci/Fib.h" //ÒıÈëFibÊıÁĞÀà
-// Fibonacci²éÕÒËã·¨£¨°æ±¾B£©£ºÔÚÓĞĞòÏòÁ¿µÄÇø¼ä[lo, hi)ÄÚ²éÕÒÔªËØe£¬0 <= lo <= hi <= _size
+#include "fibonacci/Fib.h" //å¼•å…¥Fibæ•°åˆ—ç±»
+// FibonacciæŸ¥æ‰¾ç®—æ³•ï¼ˆç‰ˆæœ¬Bï¼‰ï¼šåœ¨æœ‰åºå‘é‡çš„åŒºé—´[lo, hi)å†…æŸ¥æ‰¾å…ƒç´ eï¼Œ0 <= lo <= hi <= _size
 template <typename T>
 static Rank fibSearch(T *S, T const &e, Rank lo, Rank hi)
 {
    /*DSA*/ printf("FIB search (B)\n");
    for (Fib fib(hi - lo); lo < hi;)
-   {          // FibÊıÁĞÖÆ±í±¸²é
+   {          // Fibæ•°åˆ—åˆ¶è¡¨å¤‡æŸ¥
       /*DSA*/ // for ( int i = 0; i < lo; i++ ) printf ( "     " ); if ( lo >= 0 ) for ( int i = lo; i < hi; i++ ) printf ( "....^" ); else printf ( "<<<<|" ); printf ( "\n" );
       while (hi - lo < fib.get())
-         fib.prev();                       //×ÔºóÏòÇ°Ë³Ğò²éÕÒ£¨·ÖÌ¯O(1)£©
-      Rank mi = lo + fib.get() - 1;        //È·¶¨ĞÎÈçFib(k) - 1µÄÖáµã
-      (e < S[mi]) ? hi = mi : lo = mi + 1; //±È½ÏºóÈ·¶¨ÉîÈëÇ°°ë¶Î[lo, mi)»òºó°ë¶Î(mi, hi)
-   }                                       //³É¹¦²éÕÒ²»ÄÜÌáÇ°ÖÕÖ¹
+         fib.prev();                       //è‡ªåå‘å‰é¡ºåºæŸ¥æ‰¾ï¼ˆåˆ†æ‘ŠO(1)ï¼‰
+      Rank mi = lo + fib.get() - 1;        //ç¡®å®šå½¢å¦‚Fib(k) - 1çš„è½´ç‚¹
+      (e < S[mi]) ? hi = mi : lo = mi + 1; //æ¯”è¾ƒåç¡®å®šæ·±å…¥å‰åŠæ®µ[lo, mi)æˆ–ååŠæ®µ(mi, hi)
+   }                                       //æˆåŠŸæŸ¥æ‰¾ä¸èƒ½æå‰ç»ˆæ­¢
    /*DSA*/                                 // for( int i = 0; i < lo - 1; i++ ) printf ( "     " ); if ( lo > 0 ) printf ( "....|\n" ); else printf ( "<<<<|\n" );
-   return --lo;                            //Ñ­»·½áÊøÊ±£¬loÎª´óÓÚeµÄÔªËØµÄ×îĞ¡ÖÈ£¬¹Êlo - 1¼´²»´óÓÚeµÄÔªËØµÄ×î´óÖÈ
-} //ÓĞ¶à¸öÃüÖĞÔªËØÊ±£¬×ÜÄÜ±£Ö¤·µ»Ø×îÖÈ×î´óÕß£»²éÕÒÊ§°ÜÊ±£¬ÄÜ¹»·µ»ØÊ§°ÜµÄÎ»ÖÃ
+   return --lo;                            //å¾ªç¯ç»“æŸæ—¶ï¼Œloä¸ºå¤§äºeçš„å…ƒç´ çš„æœ€å°ç§©ï¼Œæ•…lo - 1å³ä¸å¤§äºeçš„å…ƒç´ çš„æœ€å¤§ç§©
+} //æœ‰å¤šä¸ªå‘½ä¸­å…ƒç´ æ—¶ï¼Œæ€»èƒ½ä¿è¯è¿”å›æœ€ç§©æœ€å¤§è€…ï¼›æŸ¥æ‰¾å¤±è´¥æ—¶ï¼Œèƒ½å¤Ÿè¿”å›å¤±è´¥çš„ä½ç½®

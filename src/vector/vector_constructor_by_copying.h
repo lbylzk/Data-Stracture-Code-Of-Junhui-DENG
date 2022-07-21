@@ -8,10 +8,10 @@
 
 #pragma once
 
-template <typename T> // TÎª»ù±¾ÀàĞÍ£¬»òÒÑÖØÔØ¸³Öµ²Ù×÷·û'='
+template <typename T> // Tä¸ºåŸºæœ¬ç±»å‹ï¼Œæˆ–å·²é‡è½½èµ‹å€¼æ“ä½œç¬¦'='
 void Vector<T>::copyFrom(T const *A, Rank lo, Rank hi)
-{                                            //ÒÔÊı×éÇø¼äA[lo, hi)ÎªÀ¶±¾¸´ÖÆÏòÁ¿
-   _elem = new T[_capacity = 2 * (hi - lo)]; //·ÖÅä¿Õ¼ä
-   for (_size = 0; lo < hi; _size++, lo++)   // A[lo, hi)ÄÚµÄÔªËØÖğÒ»
-      _elem[_size] = A[lo];                  //¸´ÖÆÖÁ_elem[0, hi - lo)
-} //ÓÃconstĞŞÊÎ£¬±£Ö¤AÖĞµÄÔªËØ²»ÖÂ±»´Û¸Ä£»ÔËĞĞÊ±¼ä = O(hi-lo)
+{                                            //ä»¥æ•°ç»„åŒºé—´A[lo, hi)ä¸ºè“æœ¬å¤åˆ¶å‘é‡
+   _elem = new T[_capacity = 2 * (hi - lo)]; //åˆ†é…ç©ºé—´
+   for (_size = 0; lo < hi; _size++, lo++)   // A[lo, hi)å†…çš„å…ƒç´ é€ä¸€
+      _elem[_size] = A[lo];                  //å¤åˆ¶è‡³_elem[0, hi - lo)
+} //ç”¨constä¿®é¥°ï¼Œä¿è¯Aä¸­çš„å…ƒç´ ä¸è‡´è¢«ç¯¡æ”¹ï¼›è¿è¡Œæ—¶é—´ = O(hi-lo)

@@ -9,16 +9,16 @@
 #pragma once
 
 template <typename T>
-void Vector<T>::traverse(void (*visit)(T &)) //借助函数指针机制
+void Vector<T>::traverse(void (*visit)(T &)) //鍊熷姪鍑芥暟鎸囬拡鏈哄埗
 {
     for (Rank i = 0; i < _size; i++)
         visit(_elem[i]);
-} //遍历向量
+} //閬嶅巻鍚戦噺
 
 template <typename T>
-template <typename VST>              //元素类型、操作器
-void Vector<T>::traverse(VST &visit) //借助函数对象机制
+template <typename VST>              //鍏冪礌绫诲瀷銆佹搷浣滃櫒
+void Vector<T>::traverse(VST &visit) //鍊熷姪鍑芥暟瀵硅薄鏈哄埗
 {
     for (Rank i = 0; i < _size; i++)
         visit(_elem[i]);
-} //遍历向量
+} //閬嶅巻鍚戦噺

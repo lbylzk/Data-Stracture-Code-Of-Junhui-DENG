@@ -8,15 +8,15 @@
 
 #pragma once
 
-#include "fibonacci/Fib.h" //ÒıÈëFibÊıÁĞÀà
-// Fibonacci²éÕÒËã·¨£¨°æ±¾A£©£ºÔÚÓĞĞòÏòÁ¿µÄÇø¼ä[lo, hi)ÄÚ²éÕÒÔªËØe£¬0 <= lo <= hi <= _size
+#include "fibonacci/Fib.h" //å¼•å…¥Fibæ•°åˆ—ç±»
+// FibonacciæŸ¥æ‰¾ç®—æ³•ï¼ˆç‰ˆæœ¬Aï¼‰ï¼šåœ¨æœ‰åºå‘é‡çš„åŒºé—´[lo, hi)å†…æŸ¥æ‰¾å…ƒç´ eï¼Œ0 <= lo <= hi <= _size
 template <typename T>
 static Rank fibSearch(T *S, T const &e, Rank lo, Rank hi)
 {
    /*DSA*/ printf("FIB search (A)\n");
-   //ÓÃO(log_phi(n = hi - lo)Ê±¼ä´´½¨FibÊıÁĞ
+   //ç”¨O(log_phi(n = hi - lo)æ—¶é—´åˆ›å»ºFibæ•°åˆ—
    for (Fib fib(hi - lo); lo < hi;)
-   { // FibÊıÁĞÖÆ±í±¸²é£»´ËºóÃ¿²½µü´ú½öÒ»´Î±È½Ï¡¢Á½¸ö·ÖÖ§
+   { // Fibæ•°åˆ—åˆ¶è¡¨å¤‡æŸ¥ï¼›æ­¤åæ¯æ­¥è¿­ä»£ä»…ä¸€æ¬¡æ¯”è¾ƒã€ä¸¤ä¸ªåˆ†æ”¯
       /*DSA*/ for (Rank i = 0; i < lo; i++)
          printf("     ");
       if (lo >= 0)
@@ -26,14 +26,14 @@ static Rank fibSearch(T *S, T const &e, Rank lo, Rank hi)
          printf("<<<<|");
       printf("\n");
       while (hi - lo < fib.get())
-         fib.prev();                //×ÔºóÏòÇ°Ë³Ğò²éÕÒ£¨·ÖÌ¯O(1)£©
-      Rank mi = lo + fib.get() - 1; //È·¶¨ĞÎÈçFib(k) - 1µÄÖáµã
+         fib.prev();                //è‡ªåå‘å‰é¡ºåºæŸ¥æ‰¾ï¼ˆåˆ†æ‘ŠO(1)ï¼‰
+      Rank mi = lo + fib.get() - 1; //ç¡®å®šå½¢å¦‚Fib(k) - 1çš„è½´ç‚¹
       if (e < S[mi])
-         hi = mi; //ÉîÈëÇ°°ë¶Î[lo, mi)¼ÌĞø²éÕÒ
+         hi = mi; //æ·±å…¥å‰åŠæ®µ[lo, mi)ç»§ç»­æŸ¥æ‰¾
       else if (S[mi] < e)
-         lo = mi + 1; //ÉîÈëºó°ë¶Î(mi, hi)¼ÌĞø²éÕÒ
+         lo = mi + 1; //æ·±å…¥ååŠæ®µ(mi, hi)ç»§ç»­æŸ¥æ‰¾
       else
-         return mi; //ÔÚmi´¦ÃüÖĞ
+         return mi; //åœ¨miå¤„å‘½ä¸­
       /*DSA*/ if (lo >= hi)
       {
          for (int i = 0; i < mi; i++)
@@ -43,6 +43,6 @@ static Rank fibSearch(T *S, T const &e, Rank lo, Rank hi)
          else
             printf("<<<<|\n");
       }
-   }          //³É¹¦²éÕÒ¿ÉÒÔÌáÇ°ÖÕÖ¹
-   return -1; //²éÕÒÊ§°Ü
-} //ÓĞ¶à¸öÃüÖĞÔªËØÊ±£¬²»ÄÜ±£Ö¤·µ»ØÖÈ×î´óÕß£»Ê§°ÜÊ±£¬¼òµ¥µØ·µ»Ø-1£¬¶ø²»ÄÜÖ¸Ê¾Ê§°ÜµÄÎ»ÖÃ
+   }          //æˆåŠŸæŸ¥æ‰¾å¯ä»¥æå‰ç»ˆæ­¢
+   return -1; //æŸ¥æ‰¾å¤±è´¥
+} //æœ‰å¤šä¸ªå‘½ä¸­å…ƒç´ æ—¶ï¼Œä¸èƒ½ä¿è¯è¿”å›ç§©æœ€å¤§è€…ï¼›å¤±è´¥æ—¶ï¼Œç®€å•åœ°è¿”å›-1ï¼Œè€Œä¸èƒ½æŒ‡ç¤ºå¤±è´¥çš„ä½ç½®

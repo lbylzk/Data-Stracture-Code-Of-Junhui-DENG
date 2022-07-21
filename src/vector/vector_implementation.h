@@ -9,9 +9,9 @@
 #pragma once
 
 /******************************************************************************************
- * ½«vector¸÷·½·¨µÄÊµÏÖ²¿·Ö£¬¼ò½àµØÒıÈëvector.h
- * Ğ§¹ûµÈÍ¬ÓÚ½«ÕâĞ©ÊµÏÖÖ±½Ó»ãÈëvector.h
- * ÔÚexportÉĞÎ´±»±àÒëÆ÷Ö§³ÖÇ°£¬Èç´Ë¿É½«¶¨ÒåÓëÊµÏÖ·ÖÀë£¬ÒÔ±ã¿Î³Ì½²½â
+ * å°†vectorå„æ–¹æ³•çš„å®ç°éƒ¨åˆ†ï¼Œç®€æ´åœ°å¼•å…¥vector.h
+ * æ•ˆæœç­‰åŒäºå°†è¿™äº›å®ç°ç›´æ¥æ±‡å…¥vector.h
+ * åœ¨exportå°šæœªè¢«ç¼–è¯‘å™¨æ”¯æŒå‰ï¼Œå¦‚æ­¤å¯å°†å®šä¹‰ä¸å®ç°åˆ†ç¦»ï¼Œä»¥ä¾¿è¯¾ç¨‹è®²è§£
  ******************************************************************************************/
 #include "_share/release.h"
 #include "_share/util.h"
@@ -30,9 +30,9 @@
 
 #include "Vector_find.h"
 #include "Vector_search.h"
-#include "Vector_search_binary_C.h" //ÓĞA¡¢B¡¢CÈıÖÖ°æ±¾£¬C×îÍêÉÆ
-//#include "Vector_search_fibonaccian_A.h" //ÊµÓÃ°æ£¨µ«·µ»ØÖµÓĞ´ıÓë½Ó¿ÚÍ³Ò»£©
-#include "Vector_search_fibonaccian_B.h" //»ªÀö°æ
+#include "Vector_search_binary_C.h" //æœ‰Aã€Bã€Cä¸‰ç§ç‰ˆæœ¬ï¼ŒCæœ€å®Œå–„
+//#include "Vector_search_fibonaccian_A.h" //å®ç”¨ç‰ˆï¼ˆä½†è¿”å›å€¼æœ‰å¾…ä¸æ¥å£ç»Ÿä¸€ï¼‰
+#include "Vector_search_fibonaccian_B.h" //åä¸½ç‰ˆ
 
 #include "Vector_traverse.h"
 
@@ -54,5 +54,5 @@
 #include "vector_quickSort_iterative.h"
 #include "vector_shellSort.h"
 
-#include "Vector_uniquify.h" //»òÕßVector_uniquify_slow.h
+#include "Vector_uniquify.h" //æˆ–è€…Vector_uniquify_slow.h
 #include "Vector_deduplicate.h"

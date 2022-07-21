@@ -8,11 +8,11 @@
 
 #pragma once
 
-template <typename T> //ÏòÁ¿µÄÆğÅİÅÅĞò£¨ÌøÔ¾°æ£©
+template <typename T> //å‘é‡çš„èµ·æ³¡æ’åºï¼ˆè·³è·ƒç‰ˆï¼‰
 void Vector<T>::bubbleSort(Rank lo, Rank hi)
 { // assert: 0 <= lo < hi <= size
    for (Rank last = --hi; lo < hi; hi = last)
       for (Rank i = last = lo; i < hi; i++)
-         if (_elem[i] > _elem[i + 1])            //ÈôÄæĞò£¬Ôò
-            swap(_elem[last = i], _elem[i + 1]); //¾­½»»»Ê¹¾Ö²¿ÓĞĞò
+         if (_elem[i] > _elem[i + 1])            //è‹¥é€†åºï¼Œåˆ™
+            swap(_elem[last = i], _elem[i + 1]); //ç»äº¤æ¢ä½¿å±€éƒ¨æœ‰åº
 }

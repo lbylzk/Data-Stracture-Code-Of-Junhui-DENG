@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> //ÏòÁ¿¹é²¢ÅÅĞò
+template <typename T> //å‘é‡å½’å¹¶æ’åº
 void Vector<T>::mergeSort(Rank lo, Rank hi)
 {          // 0 <= lo < hi <= size
    /*DSA*/ // printf ( "\tMERGEsort [%3d, %3d)\n", lo , hi );
    if (hi - lo < 2)
-      return;               //µ¥ÔªËØÇø¼ä×ÔÈ»ÓĞĞò£¬·ñÔò...
-   Rank mi = (lo + hi) / 2; //ÒÔÖĞµãÎª½ç
+      return;               //å•å…ƒç´ åŒºé—´è‡ªç„¶æœ‰åºï¼Œå¦åˆ™...
+   Rank mi = (lo + hi) / 2; //ä»¥ä¸­ç‚¹ä¸ºç•Œ
    mergeSort(lo, mi);
-   mergeSort(mi, hi); //·Ö±ğÅÅĞò
-   merge(lo, mi, hi); //¹é²¢
+   mergeSort(mi, hi); //åˆ†åˆ«æ’åº
+   merge(lo, mi, hi); //å½’å¹¶
 }

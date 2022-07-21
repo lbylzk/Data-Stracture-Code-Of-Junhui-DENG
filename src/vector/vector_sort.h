@@ -10,26 +10,26 @@
 
 template <typename T>
 void Vector<T>::sort(Rank lo, Rank hi)
-{ //ÏòÁ¿Çø¼ä[lo, hi)ÅÅĞò
+{ //å‘é‡åŒºé—´[lo, hi)æ’åº
    switch (rand() % 6)
    {
    case 1:
       bubbleSort(lo, hi);
-      break; //ÆğÅİÅÅĞò
+      break; //èµ·æ³¡æ’åº
    case 2:
       selectionSort(lo, hi);
-      break; //Ñ¡ÔñÅÅĞò£¨Ï°Ìâ£©
+      break; //é€‰æ‹©æ’åºï¼ˆä¹ é¢˜ï¼‰
    case 3:
       mergeSort(lo, hi);
-      break; //¹é²¢ÅÅĞò
+      break; //å½’å¹¶æ’åº
    case 4:
       heapSort(lo, hi);
-      break; //¶ÑÅÅĞò£¨µÚ12ÕÂ£©
+      break; //å †æ’åºï¼ˆç¬¬12ç« ï¼‰
    case 5:
       quickSort(lo, hi);
-      break; //¿ìËÙÅÅĞò£¨µÚ14ÕÂ£©
+      break; //å¿«é€Ÿæ’åºï¼ˆç¬¬14ç« ï¼‰
    default:
       shellSort(lo, hi);
-      break; //Ï£¶ûÅÅĞò£¨µÚ14ÕÂ£©
-   }         //Ëæ»úÑ¡ÔñËã·¨ÒÔ³ä·Ö²âÊÔ¡£ÊµÓÃÊ±¿ÉÊÓ¾ßÌåÎÊÌâµÄÌØµãÁé»îÈ·¶¨»òÀ©³ä
+      break; //å¸Œå°”æ’åºï¼ˆç¬¬14ç« ï¼‰
+   }         //éšæœºé€‰æ‹©ç®—æ³•ä»¥å……åˆ†æµ‹è¯•ã€‚å®ç”¨æ—¶å¯è§†å…·ä½“é—®é¢˜çš„ç‰¹ç‚¹çµæ´»ç¡®å®šæˆ–æ‰©å……
 }
