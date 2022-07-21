@@ -1,2 +1,2 @@
 # Data-Stracture-Code-Of-Junhui-DENG
-�˿��ԡ����ݽṹ��C++���԰棩�����桷Visual Studio���Դ����
+邓俊辉《数据结构（C++语言版）第三版》Visual Studio风格源代码
