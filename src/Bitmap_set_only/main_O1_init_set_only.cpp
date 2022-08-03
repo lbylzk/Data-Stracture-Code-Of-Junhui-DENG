@@ -11,35 +11,44 @@
 #include "Bitmap/Bitmap_O1_init.h"
 
 /******************************************************************************************
- * ²âÊÔÎ»Í¼
+ * æµ‹è¯•ä½å›¾
  ******************************************************************************************/
-int testBitmap ( int n ) {
-   bool* B = new bool[n]; memset ( B, 0, n * sizeof ( bool ) ); //³£¹æÎ»Í¼£¬´´½¨ºóËæ¼´O(n)Ê±¼ä³õÊ¼»¯
-   Bitmap M ( n );
-   for ( int i = 0; i < 9 * n; i++ ) {
-      Rank k = dice ( n );
-      printf ( "set(%d) ...", k ); //set(k)
-      B[k] = true; M.set ( k );
-      printf ( "done\n CRC: " );
-      for ( int j = 0; j < n; j++ )
-         printf ( "%6c", B[j] == M.test ( j ) ? ' ' : '!' );
-      printf ( "\n B[]: " );
-      for ( int j = 0; j < n; j++ )
-         printf ( "%6c", B[j] ? 'x' : '.' );
-      printf ( "\n M[]: " );
-      for ( int j = 0; j < n; j++ )
-         printf ( "%6c", M.test ( j ) ? 'x' : '.' );
-      printf ( "\n\n\n" );
+int testBitmap(int n)
+{
+   bool *B = new bool[n];
+   memset(B, 0, n * sizeof(bool)); //å¸¸è§„ä½å›¾ï¼Œåˆ›å»ºåéšå³O(n)æ—¶é—´åˆå§‹åŒ–
+   Bitmap M(n);
+   for (int i = 0; i < 9 * n; i++)
+   {
+      Rank k = dice(n);
+      printf("set(%d) ...", k); // set(k)
+      B[k] = true;
+      M.set(k);
+      printf("done\n CRC: ");
+      for (int j = 0; j < n; j++)
+         printf("%6c", B[j] == M.test(j) ? ' ' : '!');
+      printf("\n B[]: ");
+      for (int j = 0; j < n; j++)
+         printf("%6c", B[j] ? 'x' : '.');
+      printf("\n M[]: ");
+      for (int j = 0; j < n; j++)
+         printf("%6c", M.test(j) ? 'x' : '.');
+      printf("\n\n\n");
    }
-   delete [] B;
+   delete[] B;
    return 0;
 }
 
 /******************************************************************************************
- * ²âÊÔÎ»Í¼
+ * æµ‹è¯•ä½å›¾
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand ( ( unsigned int ) time ( NULL ) ); //ÉèÖÃËæ»úÖÖ×Ó
-   return testBitmap ( atoi ( argv[1] ) ); //Æô¶¯²âÊÔ
+int main(int argc, char *argv[])
+{
+   if (2 > argc)
+   {
+      printf("Usage: %s <size of test>\a\a\n", argv[0]);
+      return 1;
+   }
+   srand((unsigned int)time(NULL));  //è®¾ç½®éšæœºç§å­
+   return testBitmap(atoi(argv[1])); //å¯åŠ¨æµ‹è¯•
 }
