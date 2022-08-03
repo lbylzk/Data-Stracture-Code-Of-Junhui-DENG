@@ -13,7 +13,7 @@ BinNodePosi<T> BinTree<T>::insert(T const &e)
 {
     _size = 1;
     return _root = new BinNode<T>(e);
-} //将e当作根节点插入空的二叉树
+} //灏唀褰撲綔鏍硅妭鐐规彃鍏ョ┖鐨勪簩鍙夋爲
 
 template <typename T>
 BinNodePosi<T> BinTree<T>::insert(T const &e, BinNodePosi<T> x)
@@ -22,7 +22,7 @@ BinNodePosi<T> BinTree<T>::insert(T const &e, BinNodePosi<T> x)
     x->insertAsLC(e);
     updateHeightAbove(x);
     return x->lc;
-} // e插入为x的左孩子
+} // e鎻掑叆涓簒鐨勫乏瀛╁瓙
 
 template <typename T>
 BinNodePosi<T> BinTree<T>::insert(BinNodePosi<T> x, T const &e)
@@ -31,4 +31,4 @@ BinNodePosi<T> BinTree<T>::insert(BinNodePosi<T> x, T const &e)
     x->insertAsRC(e);
     updateHeightAbove(x);
     return x->rc;
-} // e插入为x的右孩子
+} // e鎻掑叆涓簒鐨勫彸瀛╁瓙

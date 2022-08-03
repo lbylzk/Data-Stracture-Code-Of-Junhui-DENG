@@ -8,19 +8,19 @@
 
 #pragma once
 
-/*DSA*/ #include "stack/Stack.h" //ÒıÈëÕ»Ä£°åÀà
+/*DSA*/ #include "stack/Stack.h" //å¼•å…¥æ ˆæ¨¡æ¿ç±»
     /*DSA*/ #include "BinNode_TravPostorder_R.h"
     /*DSA*/ #include "BinNode_TravPostorder_I.h" template <typename T>
-    template <typename VST> //ÔªËØÀàĞÍ¡¢²Ù×÷Æ÷
+    template <typename VST> //å…ƒç´ ç±»å‹ã€æ“ä½œå™¨
     void BinNode <T>::travPost(VST &visit)
-{ //¶ş²æÊ÷ºóĞò±éÀúËã·¨Í³Ò»Èë¿Ú
+{ //äºŒå‰æ ‘ååºéå†ç®—æ³•ç»Ÿä¸€å…¥å£
    switch (rand() % 2)
-   { //´Ë´¦ÔİËæ»úÑ¡ÔñÒÔ×ö²âÊÔ£¬¹²Á½ÖÖÑ¡Ôñ
+   { //æ­¤å¤„æš‚éšæœºé€‰æ‹©ä»¥åšæµ‹è¯•ï¼Œå…±ä¸¤ç§é€‰æ‹©
    case 1:
       travPost_I(this, visit);
-      break; //µü´ú°æ
+      break; //è¿­ä»£ç‰ˆ
    default:
       travPost_R(this, visit);
-      break; //µİ¹é°æ
+      break; //é€’å½’ç‰ˆ
    }
 }

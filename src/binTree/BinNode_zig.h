@@ -10,7 +10,7 @@
 
 template <typename T>
 BinNodePosi<T> BinNode<T>::zig()
-{ //˳ʱ����ת
+{ //顺时针旋转
    BinNodePosi<T> lChild = lc;
    lChild->parent = this->parent;
    if (lChild->parent)

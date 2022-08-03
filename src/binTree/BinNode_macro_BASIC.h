@@ -9,7 +9,7 @@
 #pragma once
 
 /******************************************************************************************
- * BinNode×´Ì¬ÓëÐÔÖÊµÄÅÐ¶Ï
+ * BinNodeçŠ¶æ€ä¸Žæ€§è´¨çš„åˆ¤æ–­
  ******************************************************************************************/
 #define IsRoot(x) (!((x).parent))
 #define IsLChild(x) (!IsRoot(x) && (&(x) == (x).parent->lc))
@@ -17,14 +17,14 @@
 #define HasParent(x) (!IsRoot(x))
 #define HasLChild(x) ((x).lc)
 #define HasRChild(x) ((x).rc)
-#define HasChild(x) (HasLChild(x) || HasRChild(x))     //ÖÁÉÙÓµÓÐÒ»¸öº¢×Ó
-#define HasBothChild(x) (HasLChild(x) && HasRChild(x)) //Í¬Ê±ÓµÓÐÁ½¸öº¢×Ó
+#define HasChild(x) (HasLChild(x) || HasRChild(x))     //è‡³å°‘æ‹¥æœ‰ä¸€ä¸ªå­©å­
+#define HasBothChild(x) (HasLChild(x) && HasRChild(x)) //åŒæ—¶æ‹¥æœ‰ä¸¤ä¸ªå­©å­
 #define IsLeaf(x) (!HasChild(x))
 
 /******************************************************************************************
- * ÓëBinNode¾ßÓÐÌØ¶¨¹ØÏµµÄ½Úµã¼°Ö¸Õë
+ * ä¸ŽBinNodeå…·æœ‰ç‰¹å®šå…³ç³»çš„èŠ‚ç‚¹åŠæŒ‡é’ˆ
  ******************************************************************************************/
-#define sibling(p) (IsLChild(*(p)) ? (p)->parent->rc : (p)->parent->lc) /*ÐÖµÜ*/
-#define uncle(x) (sibling((x)->parent))                                 /*ÊåÊå*/
-#define FromParentTo(x)                                                 /*À´×Ô¸¸Ç×µÄÒýÓÃ*/ \
+#define sibling(p) (IsLChild(*(p)) ? (p)->parent->rc : (p)->parent->lc) /*å…„å¼Ÿ*/
+#define uncle(x) (sibling((x)->parent))                                 /*å”å”*/
+#define FromParentTo(x)                                                 /*æ¥è‡ªçˆ¶äº²çš„å¼•ç”¨*/ \
    (IsRoot(x) ? _root : (IsLChild(x) ? (x).parent->lc : (x).parent->rc))

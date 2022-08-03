@@ -8,20 +8,20 @@
 
 #pragma once
 
-/*DSA*/ #include "queue/queue.h" //ÒýÈë¶ÓÁÐ
+/*DSA*/ #include "queue/queue.h" //å¼•å…¥é˜Ÿåˆ—
     template <typename T>
-    template <typename VST> //ÔªËØÀàÐÍ¡¢²Ù×÷Æ÷
+    template <typename VST> //å…ƒç´ ç±»åž‹ã€æ“ä½œå™¨
     void BinNode <T>::travLevel(VST &visit)
-{                           //¶þ²æÊ÷²ã´Î±éÀúËã·¨
-   Queue<BinNodePosi<T>> Q; //¸¨Öú¶ÓÁÐ
-   Q.enqueue(this);         //¸ù½ÚµãÈë¶Ó
+{                           //äºŒå‰æ ‘å±‚æ¬¡éåŽ†ç®—æ³•
+   Queue<BinNodePosi<T>> Q; //è¾…åŠ©é˜Ÿåˆ—
+   Q.enqueue(this);         //æ ¹èŠ‚ç‚¹å…¥é˜Ÿ
    while (!Q.empty())
-   { //ÔÚ¶ÓÁÐÔÙ´Î±ä¿ÕÖ®Ç°£¬·´¸´µü´ú
+   { //åœ¨é˜Ÿåˆ—å†æ¬¡å˜ç©ºä¹‹å‰ï¼Œåå¤è¿­ä»£
       BinNodePosi<T> x = Q.dequeue();
-      visit(x->data); //È¡³ö¶ÓÊ×½Úµã²¢·ÃÎÊÖ®
+      visit(x->data); //å–å‡ºé˜Ÿé¦–èŠ‚ç‚¹å¹¶è®¿é—®ä¹‹
       if (HasLChild(*x))
-         Q.enqueue(x->lc); //×óº¢×ÓÈë¶Ó
+         Q.enqueue(x->lc); //å·¦å­©å­å…¥é˜Ÿ
       if (HasRChild(*x))
-         Q.enqueue(x->rc); //ÓÒº¢×ÓÈë¶Ó
+         Q.enqueue(x->rc); //å³å­©å­å…¥é˜Ÿ
    }
 }

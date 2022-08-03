@@ -8,20 +8,20 @@
 
 #pragma once
 
-template <typename T, typename VST> //ÔªËØÀàÐÍ¡¢²Ù×÷Æ÷
+template <typename T, typename VST> //å…ƒç´ ç±»åž‹ã€æ“ä½œå™¨
 void travIn_I4(BinNodePosi<T> x, VST &visit)
-{ //¶þ²æÊ÷ÖÐÐò±éÀú£¨µü´ú°æ#4£¬ÎÞÐèÕ»»ò±êÖ¾Î»£©
+{ //äºŒå‰æ ‘ä¸­åºéåŽ†ï¼ˆè¿­ä»£ç‰ˆ#4ï¼Œæ— éœ€æ ˆæˆ–æ ‡å¿—ä½ï¼‰
    while (true)
-      if (HasLChild(*x)) //ÈôÓÐ×ó×ÓÊ÷£¬Ôò
-         x = x->lc;      //ÉîÈë±éÀú×ó×ÓÊ÷
+      if (HasLChild(*x)) //è‹¥æœ‰å·¦å­æ ‘ï¼Œåˆ™
+         x = x->lc;      //æ·±å…¥éåŽ†å·¦å­æ ‘
       else
-      {                         //·ñÔò
-         visit(x->data);        //·ÃÎÊµ±Ç°½Úµã£¬²¢
-         while (!HasRChild(*x)) //²»¶ÏµØÔÚÎÞÓÒ·ÖÖ§´¦
+      {                         //å¦åˆ™
+         visit(x->data);        //è®¿é—®å½“å‰èŠ‚ç‚¹ï¼Œå¹¶
+         while (!HasRChild(*x)) //ä¸æ–­åœ°åœ¨æ— å³åˆ†æ”¯å¤„
             if (!(x = x->succ()))
-               return; //»ØËÝÖÁÖ±½Óºó¼Ì£¨ÔÚÃ»ÓÐºó¼ÌµÄÄ©½Úµã´¦£¬Ö±½ÓÍË³ö£©
+               return; //å›žæº¯è‡³ç›´æŽ¥åŽç»§ï¼ˆåœ¨æ²¡æœ‰åŽç»§çš„æœ«èŠ‚ç‚¹å¤„ï¼Œç›´æŽ¥é€€å‡ºï¼‰
             else
-               visit(x->data); //·ÃÎÊÐÂµÄµ±Ç°½Úµã
-         x = x->rc;            //£¨Ö±ÖÁÓÐÓÒ·ÖÖ§´¦£©×ªÏò·Ç¿ÕµÄÓÒ×ÓÊ÷
+               visit(x->data); //è®¿é—®æ–°çš„å½“å‰èŠ‚ç‚¹
+         x = x->rc;            //ï¼ˆç›´è‡³æœ‰å³åˆ†æ”¯å¤„ï¼‰è½¬å‘éžç©ºçš„å³å­æ ‘
       }
 }

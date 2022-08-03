@@ -8,11 +8,11 @@
 
 #pragma once
 
-//通过zig旋转调整，将BST子树x拉伸成最右侧通路
+//閫氳繃zig鏃嬭浆璋冩暣锛屽皢BST瀛愭爲x鎷変几鎴愭渶鍙充晶閫氳矾
 template <typename T>
 void stretchByZig(BinNodePosi<T> &x)
 {
-   /*DSA*/ int c = 0; //记录旋转次数
+   /*DSA*/ int c = 0; //璁板綍鏃嬭浆娆℃暟
    BinNodePosi<T> v = x;
    while (x->lc)
       x = x->lc;

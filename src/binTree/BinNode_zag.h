@@ -10,7 +10,7 @@
 
 template <typename T>
 BinNodePosi<T> BinNode<T>::zag()
-{ //ÄæÊ±ÕëÐý×ª
+{ //é€†æ—¶é’ˆæ—‹è½¬
    BinNodePosi<T> rChild = rc;
    rChild->parent = this->parent;
    if (rChild->parent)

@@ -8,63 +8,63 @@
 
 #pragma once
 
-#include "BinNode.h" //ÒıÈë¶ş²æÊ÷½ÚµãÀà
+#include "BinNode.h" //å¼•å…¥äºŒå‰æ ‘èŠ‚ç‚¹ç±»
 template <typename T>
 class BinTree
-{ //¶ş²æÊ÷Ä£°åÀà
+{ //äºŒå‰æ ‘æ¨¡æ¿ç±»
 protected:
    int _size;
-   BinNodePosi<T> _root;                       //¹æÄ£¡¢¸ù½Úµã
-   virtual int updateHeight(BinNodePosi<T> x); //¸üĞÂ½ÚµãxµÄ¸ß¶È
-   void updateHeightAbove(BinNodePosi<T> x);   //¸üĞÂ½Úµãx¼°Æä×æÏÈµÄ¸ß¶È
+   BinNodePosi<T> _root;                       //è§„æ¨¡ã€æ ¹èŠ‚ç‚¹
+   virtual int updateHeight(BinNodePosi<T> x); //æ›´æ–°èŠ‚ç‚¹xçš„é«˜åº¦
+   void updateHeightAbove(BinNodePosi<T> x);   //æ›´æ–°èŠ‚ç‚¹xåŠå…¶ç¥–å…ˆçš„é«˜åº¦
 public:
-   BinTree() : _size(0), _root(NULL) {} //¹¹Ôìº¯Êı
+   BinTree() : _size(0), _root(NULL) {} //æ„é€ å‡½æ•°
    ~BinTree()
    {
       if (0 < _size)
          remove(_root);
-   }                                                     //Îö¹¹º¯Êı
-   int size() const { return _size; }                    //¹æÄ£
-   bool empty() const { return !_root; }                 //ÅĞ¿Õ
-   BinNodePosi<T> root() const { return _root; }         //Ê÷¸ù
-   BinNodePosi<T> insert(T const &);                     //²åÈë¸ù½Úµã
-   BinNodePosi<T> insert(T const &, BinNodePosi<T>);     //²åÈë×óº¢×Ó
-   BinNodePosi<T> insert(BinNodePosi<T>, T const &);     //²åÈëÓÒº¢×Ó
-   BinNodePosi<T> attach(BinTree<T> *&, BinNodePosi<T>); //½ÓÈë×ó×ÓÊ÷
-   BinNodePosi<T> attach(BinNodePosi<T>, BinTree<T> *&); //½ÓÈëÓÒ×ÓÊ÷
-   int remove(BinNodePosi<T>);                           //×ÓÊ÷É¾³ı
-   BinTree<T> *secede(BinNodePosi<T>);                   //×ÓÊ÷·ÖÀë
-   template <typename VST>                               //²Ù×÷Æ÷
+   }                                                     //ææ„å‡½æ•°
+   int size() const { return _size; }                    //è§„æ¨¡
+   bool empty() const { return !_root; }                 //åˆ¤ç©º
+   BinNodePosi<T> root() const { return _root; }         //æ ‘æ ¹
+   BinNodePosi<T> insert(T const &);                     //æ’å…¥æ ¹èŠ‚ç‚¹
+   BinNodePosi<T> insert(T const &, BinNodePosi<T>);     //æ’å…¥å·¦å­©å­
+   BinNodePosi<T> insert(BinNodePosi<T>, T const &);     //æ’å…¥å³å­©å­
+   BinNodePosi<T> attach(BinTree<T> *&, BinNodePosi<T>); //æ¥å…¥å·¦å­æ ‘
+   BinNodePosi<T> attach(BinNodePosi<T>, BinTree<T> *&); //æ¥å…¥å³å­æ ‘
+   int remove(BinNodePosi<T>);                           //å­æ ‘åˆ é™¤
+   BinTree<T> *secede(BinNodePosi<T>);                   //å­æ ‘åˆ†ç¦»
+   template <typename VST>                               //æ“ä½œå™¨
    void travLevel(VST &visit)
    {
       if (_root)
          _root->travLevel(visit);
-   }                       //²ã´Î±éÀú
-   template <typename VST> //²Ù×÷Æ÷
+   }                       //å±‚æ¬¡éå†
+   template <typename VST> //æ“ä½œå™¨
    void travPre(VST &visit)
    {
       if (_root)
          _root->travPre(visit);
-   }                       //ÏÈĞò±éÀú
-   template <typename VST> //²Ù×÷Æ÷
+   }                       //å…ˆåºéå†
+   template <typename VST> //æ“ä½œå™¨
    void travIn(VST &visit)
    {
       if (_root)
          _root->travIn(visit);
-   }                       //ÖĞĞò±éÀú
-   template <typename VST> //²Ù×÷Æ÷
+   }                       //ä¸­åºéå†
+   template <typename VST> //æ“ä½œå™¨
    void travPost(VST &visit)
    {
       if (_root)
          _root->travPost(visit);
-   }                                   //ºóĞò±éÀú
-   /*DSA*/ template <typename VST>     //²Ù×÷Æ÷
-   /*DSA*/ void traverse(VST &);       //×Ô¶¨Òå±éÀú
-   bool operator<(BinTree<T> const &t) //±È½ÏÆ÷£¨ÆäÓà×ÔĞĞ²¹³ä£©
+   }                                   //ååºéå†
+   /*DSA*/ template <typename VST>     //æ“ä½œå™¨
+   /*DSA*/ void traverse(VST &);       //è‡ªå®šä¹‰éå†
+   bool operator<(BinTree<T> const &t) //æ¯”è¾ƒå™¨ï¼ˆå…¶ä½™è‡ªè¡Œè¡¥å……ï¼‰
    {
       return _root && t._root && lt(_root, t._root);
    }
-   bool operator==(BinTree<T> const &t) //ÅĞµÈÆ÷
+   bool operator==(BinTree<T> const &t) //åˆ¤ç­‰å™¨
    {
       return _root && t._root && (_root == t._root);
    }

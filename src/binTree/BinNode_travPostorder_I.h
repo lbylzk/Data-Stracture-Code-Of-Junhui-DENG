@@ -8,32 +8,32 @@
 
 #pragma once
 
-template <typename T> //����Sջ���ڵ�Ϊ���������У��ҵ�������ɼ�Ҷ�ڵ�
+template <typename T> //在以S栈顶节点为根的子树中，找到最高左侧可见叶节点
 static void gotoLeftmostLeaf(Stack<BinNodePosi<T>> &S)
-{                                     //��;�����ڵ�������ջ
-   while (BinNodePosi<T> x = S.top()) //�Զ����£�������鵱ǰ�ڵ㣨��ջ����
+{                                     //沿途所遇节点依次入栈
+   while (BinNodePosi<T> x = S.top()) //自顶而下，反复检查当前节点（即栈顶）
       if (HasLChild(*x))
-      { //����������
+      { //尽可能向左
          if (HasRChild(*x))
-            S.push(x->rc); //�����Һ��ӣ�������ջ
-         S.push(x->lc);    //Ȼ���ת������
+            S.push(x->rc); //若有右孩子，优先入栈
+         S.push(x->lc);    //然后才转至左孩子
       }
-      else              //ʵ������
-         S.push(x->rc); //������
-   S.pop();             //����֮ǰ������ջ���Ŀսڵ�
+      else              //实不得已
+         S.push(x->rc); //才向右
+   S.pop();             //返回之前，弹出栈顶的空节点
 }
 
 template <typename T, typename VST>
 void travPost_I(BinNodePosi<T> x, VST &visit)
-{                           //�������ĺ�������������棩
-   Stack<BinNodePosi<T>> S; //����ջ
+{                           //二叉树的后序遍历（迭代版）
+   Stack<BinNodePosi<T>> S; //辅助栈
    if (x)
-      S.push(x); //���ڵ���ջ
+      S.push(x); //根节点入栈
    while (!S.empty())
-   {                            // xʼ��Ϊ��ǰ�ڵ�
-      if (S.top() != x->parent) ////��ջ����x֮������Ϊ���֣�
-         gotoLeftmostLeaf(S);   //�����������������ҵ�HLVFL���൱�ڵݹ����룩
+   {                            // x始终为当前节点
+      if (S.top() != x->parent) ////若栈顶非x之父（而为右兄）
+         gotoLeftmostLeaf(S);   //则在其右兄子树中找到HLVFL（相当于递归深入）
       x = S.pop();
-      visit(x->data); //����ջ������ǰһ�ڵ�֮��̣���������֮
+      visit(x->data); //弹出栈顶（即前一节点之后继），并访问之
    }
 }

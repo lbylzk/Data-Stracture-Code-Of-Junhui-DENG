@@ -9,55 +9,55 @@
 #pragma once
 
 #if defined(DSA_REDBLACK)
-#define stature(p) ((p) ? (p)->height : 0) //ºìºÚÊ÷½ÚµãµÄºÚ¸ß¶È£¨NULLÊÓ×÷Íâ²¿½Úµã£¬¶ÔÓ¦ÓÚ0£©
+#define stature(p) ((p) ? (p)->height : 0) //çº¢é»‘æ ‘èŠ‚ç‚¹çš„é»‘é«˜åº¦ï¼ˆNULLè§†ä½œå¤–éƒ¨èŠ‚ç‚¹ï¼Œå¯¹åº”äº0ï¼‰
 #else
-#define stature(p) ((p) ? (p)->height : -1) //ÆäÓàBSTÖĞ½ÚµãµÄ¸ß¶È£¨NUllÊÓ×÷¿ÕÊ÷£¬¶ÔÓ¦ÓÚ-1£©
+#define stature(p) ((p) ? (p)->height : -1) //å…¶ä½™BSTä¸­èŠ‚ç‚¹çš„é«˜åº¦ï¼ˆNUllè§†ä½œç©ºæ ‘ï¼Œå¯¹åº”äº-1ï¼‰
 #endif
 typedef enum
 {
    RB_RED,
    RB_BLACK
-} RBColor; //½ÚµãÑÕÉ«
+} RBColor; //èŠ‚ç‚¹é¢œè‰²
 template <typename T>
 struct BinNode;
 template <typename T>
-using BinNodePosi = BinNode<T> *; //½ÚµãÎ»ÖÃ
+using BinNodePosi = BinNode<T> *; //èŠ‚ç‚¹ä½ç½®
 template <typename T>
 struct BinNode
-{                                 //¶ş²æÊ÷½ÚµãÄ£°åÀà
-                                  // ³ÉÔ±£¨Îª¼ò»¯ÃèÊöÆğ¼ûÍ³Ò»¿ª·Å£¬¶ÁÕß¿É¸ù¾İĞèÒª½øÒ»²½·â×°£©
-   T data;                        //ÊıÖµ
-   BinNodePosi<T> parent, lc, rc; //¸¸½Úµã¼°×ó¡¢ÓÒº¢×Ó
-   int height;                    //¸ß¶È£¨Í¨ÓÃ£©
-   int npl;                       // Null Path Length£¨×óÊ½¶Ñ£¬Ò²¿ÉÖ±½ÓÓÃheight´úÌæ£©
-   RBColor color;                 //ÑÕÉ«£¨ºìºÚÊ÷£©
-                                  // ¹¹Ôìº¯Êı
+{                                 //äºŒå‰æ ‘èŠ‚ç‚¹æ¨¡æ¿ç±»
+                                  // æˆå‘˜ï¼ˆä¸ºç®€åŒ–æè¿°èµ·è§ç»Ÿä¸€å¼€æ”¾ï¼Œè¯»è€…å¯æ ¹æ®éœ€è¦è¿›ä¸€æ­¥å°è£…ï¼‰
+   T data;                        //æ•°å€¼
+   BinNodePosi<T> parent, lc, rc; //çˆ¶èŠ‚ç‚¹åŠå·¦ã€å³å­©å­
+   int height;                    //é«˜åº¦ï¼ˆé€šç”¨ï¼‰
+   int npl;                       // Null Path Lengthï¼ˆå·¦å¼å †ï¼Œä¹Ÿå¯ç›´æ¥ç”¨heightä»£æ›¿ï¼‰
+   RBColor color;                 //é¢œè‰²ï¼ˆçº¢é»‘æ ‘ï¼‰
+                                  // æ„é€ å‡½æ•°
    BinNode() : parent(NULL), lc(NULL), rc(NULL), height(0), npl(1), color(RB_RED) {}
    BinNode(T e, BinNodePosi<T> p = NULL, BinNodePosi<T> lc = NULL, BinNodePosi<T> rc = NULL,
            int h = 0, int l = 1, RBColor c = RB_RED) : data(e), parent(p), lc(lc), rc(rc), height(h), npl(l), color(c) {}
-   // ²Ù×÷½Ó¿Ú
-   int size();                           //Í³¼Æµ±Ç°½Úµãºó´ú×ÜÊı£¬Òà¼´ÒÔÆäÎª¸ùµÄ×ÓÊ÷µÄ¹æÄ£
-   BinNodePosi<T> insertAsLC(T const &); //×÷Îªµ±Ç°½ÚµãµÄ×óº¢×Ó²åÈëĞÂ½Úµã
-   BinNodePosi<T> insertAsRC(T const &); //×÷Îªµ±Ç°½ÚµãµÄÓÒº¢×Ó²åÈëĞÂ½Úµã
-   BinNodePosi<T> succ();                //È¡µ±Ç°½ÚµãµÄÖ±½Óºó¼Ì
+   // æ“ä½œæ¥å£
+   int size();                           //ç»Ÿè®¡å½“å‰èŠ‚ç‚¹åä»£æ€»æ•°ï¼Œäº¦å³ä»¥å…¶ä¸ºæ ¹çš„å­æ ‘çš„è§„æ¨¡
+   BinNodePosi<T> insertAsLC(T const &); //ä½œä¸ºå½“å‰èŠ‚ç‚¹çš„å·¦å­©å­æ’å…¥æ–°èŠ‚ç‚¹
+   BinNodePosi<T> insertAsRC(T const &); //ä½œä¸ºå½“å‰èŠ‚ç‚¹çš„å³å­©å­æ’å…¥æ–°èŠ‚ç‚¹
+   BinNodePosi<T> succ();                //å–å½“å‰èŠ‚ç‚¹çš„ç›´æ¥åç»§
    template <typename VST>
-   void travLevel(VST &); //×ÓÊ÷²ã´Î±éÀú
+   void travLevel(VST &); //å­æ ‘å±‚æ¬¡éå†
    template <typename VST>
-   void travPre(VST &); //×ÓÊ÷ÏÈĞò±éÀú
+   void travPre(VST &); //å­æ ‘å…ˆåºéå†
    template <typename VST>
-   void travIn(VST &); //×ÓÊ÷ÖĞĞò±éÀú
+   void travIn(VST &); //å­æ ‘ä¸­åºéå†
    template <typename VST>
-   void travPost(VST &); //×ÓÊ÷ºóĞò±éÀú
+   void travPost(VST &); //å­æ ‘ååºéå†
    /*DSA*/ template <typename VST>
-   void traverse(VST &);                                          //×Ô¶¨Òå±éÀú
-                                                                  // ±È½ÏÆ÷¡¢ÅĞµÈÆ÷£¨¸÷ÁĞÆäÒ»£¬ÆäÓà×ÔĞĞ²¹³ä£©
-   bool operator<(BinNode const &bn) { return data < bn.data; }   //Ğ¡ÓÚ
-   bool operator==(BinNode const &bn) { return data == bn.data; } //µÈÓÚ
+   void traverse(VST &);                                          //è‡ªå®šä¹‰éå†
+                                                                  // æ¯”è¾ƒå™¨ã€åˆ¤ç­‰å™¨ï¼ˆå„åˆ—å…¶ä¸€ï¼Œå…¶ä½™è‡ªè¡Œè¡¥å……ï¼‰
+   bool operator<(BinNode const &bn) { return data < bn.data; }   //å°äº
+   bool operator==(BinNode const &bn) { return data == bn.data; } //ç­‰äº
                                                                   /*DSA*/
-   /*DSA*/ BinNodePosi<T> zig();                                  //Ë³Ê±ÕëĞı×ª
-   /*DSA*/ BinNodePosi<T> zag();                                  //ÄæÊ±ÕëĞı×ª
-   /*DSA*/ BinNodePosi<T> balance();                              //ÍêÈ«Æ½ºâ»¯
-   /*DSA*/ BinNodePosi<T> imitate(const BinNodePosi<T>);          //ÁÙÄ¡
+   /*DSA*/ BinNodePosi<T> zig();                                  //é¡ºæ—¶é’ˆæ—‹è½¬
+   /*DSA*/ BinNodePosi<T> zag();                                  //é€†æ—¶é’ˆæ—‹è½¬
+   /*DSA*/ BinNodePosi<T> balance();                              //å®Œå…¨å¹³è¡¡åŒ–
+   /*DSA*/ BinNodePosi<T> imitate(const BinNodePosi<T>);          //ä¸´æ‘¹
 };
 
 #include "BinNode_implementation.h"
