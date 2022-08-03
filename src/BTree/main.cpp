@@ -20,11 +20,11 @@ void testBTree(int m, int n)
    BTree<T> bt(m);
    while (bt.size() < n)
    {
-      T e = dice((T)n * 3); //[0, 3n)·¶Î§ÄÚµÄe
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
       switch (dice(3))
       {
       case 0:
-      { //²éÕÒ£¬³É¹¦ÂÊ <= 33.3%
+      { //æŸ¥æ‰¾ï¼ŒæˆåŠŸç‡ <= 33.3%
          printf("Searching for ");
          print(e);
          printf(" ... ");
@@ -33,7 +33,7 @@ void testBTree(int m, int n)
          break;
       }
       case 1:
-      { //É¾³ı£¬³É¹¦ÂÊ <= 33.3%
+      { //åˆ é™¤ï¼ŒæˆåŠŸç‡ <= 33.3%
          printf("Removing ");
          print(e);
          printf(" ... ");
@@ -41,7 +41,7 @@ void testBTree(int m, int n)
          break;
       }
       default:
-      { //²åÈë£¬³É¹¦ÂÊ == 100%
+      { //æ’å…¥ï¼ŒæˆåŠŸç‡ == 100%
          printf("Inserting ");
          print(e);
          printf(" ... ");
@@ -53,7 +53,7 @@ void testBTree(int m, int n)
    }
    while (bt.size() > 0)
    {
-      T e = dice((T)n * 3); //[0, 3n)·¶Î§ÄÚµÄe
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
       printf("Removing ");
       print(e);
       printf(" ... ");
@@ -62,7 +62,7 @@ void testBTree(int m, int n)
 }
 
 /******************************************************************************************
- * ²âÊÔÖ÷Èë¿Ú
+ * æµ‹è¯•ä¸»å…¥å£
  ******************************************************************************************/
 int main(int argc, char *argv[])
 {
@@ -84,6 +84,6 @@ int main(int argc, char *argv[])
       return 1;
    }
    srand((unsigned int)time(NULL));
-   testBTree<int>(atoi(argv[1]), atoi(argv[2])); //ÔªËØÀàĞÍ¡¢±È½ÏÆ÷¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+   testBTree<int>(atoi(argv[1]), atoi(argv[2])); //å…ƒç´ ç±»å‹ã€æ¯”è¾ƒå™¨å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }

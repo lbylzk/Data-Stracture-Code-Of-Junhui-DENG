@@ -12,30 +12,30 @@
 template <typename T>
 struct BTNode;
 template <typename T>
-using BTNodePosi = BTNode<T> *; // B-Ê÷½ÚµãÎ»ÖÃ
+using BTNodePosi = BTNode<T> *; // B-æ ‘èŠ‚ç‚¹ä½ç½®
 
 template <typename T>
 struct BTNode
-{ // B-Ê÷½ÚµãÄ£°åÀà
-   // ³ÉÔ±£¨Îª¼ò»¯ÃèÊöÆğ¼ûÍ³Ò»¿ª·Å£¬¶ÁÕß¿É¸ù¾İĞèÒª½øÒ»²½·â×°£©
-   BTNodePosi<T> parent;        //¸¸½Úµã
-   Vector<T> key;               //¹Ø¼üÂëÏòÁ¿
-   Vector<BTNodePosi<T>> child; //º¢×ÓÏòÁ¿£¨×Ü±È¹Ø¼üÂë¶àÒ»¸ö£©
-                                // ¹¹Ôìº¯Êı
+{ // B-æ ‘èŠ‚ç‚¹æ¨¡æ¿ç±»
+   // æˆå‘˜ï¼ˆä¸ºç®€åŒ–æè¿°èµ·è§ç»Ÿä¸€å¼€æ”¾ï¼Œè¯»è€…å¯æ ¹æ®éœ€è¦è¿›ä¸€æ­¥å°è£…ï¼‰
+   BTNodePosi<T> parent;        //çˆ¶èŠ‚ç‚¹
+   Vector<T> key;               //å…³é”®ç å‘é‡
+   Vector<BTNodePosi<T>> child; //å­©å­å‘é‡ï¼ˆæ€»æ¯”å…³é”®ç å¤šä¸€ä¸ªï¼‰
+                                // æ„é€ å‡½æ•°
    BTNode()
    {
       parent = NULL;
       child.insert(NULL);
-   } //ÎŞ¹Ø¼üÂë½Úµã
+   } //æ— å…³é”®ç èŠ‚ç‚¹
    BTNode(T e, BTNodePosi<T> lc = NULL, BTNodePosi<T> rc = NULL)
    {
       parent = NULL;
-      key.insert(e); //×÷Îª¸ù½ÚµãÖ»ÓĞÒ»¸ö¹Ø¼üÂë£¬ÒÔ¼°
+      key.insert(e); //ä½œä¸ºæ ¹èŠ‚ç‚¹åªæœ‰ä¸€ä¸ªå…³é”®ç ï¼Œä»¥åŠ
       child.insert(lc);
       if (lc)
-         lc->parent = this; //×óº¢×Ó
+         lc->parent = this; //å·¦å­©å­
       child.insert(rc);
       if (rc)
-         rc->parent = this; //ÓÒº¢×Ó
+         rc->parent = this; //å³å­©å­
    }
 };
