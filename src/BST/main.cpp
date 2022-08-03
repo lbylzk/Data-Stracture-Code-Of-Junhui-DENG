@@ -20,25 +20,25 @@ void testBST(int n)
    BST<T> bst;
    while (bst.size() < n)
       bst.insert(dice((T)n * 3));
-   print(bst); //Ëæ»ú´´½¨
+   print(bst); //éšæœºåˆ›å»º
    bst.stretchToLPath();
-   print(bst); //ÉìÖ±³ÉÆ²
+   print(bst); //ä¼¸ç›´æˆæ’‡
    while (!bst.empty())
-      bst.remove(bst.root()->data); //Çå¿Õ
+      bst.remove(bst.root()->data); //æ¸…ç©º
    while (bst.size() < n)
       bst.insert(dice((T)n * 3));
-   print(bst); //Ëæ»ú´´½¨
+   print(bst); //éšæœºåˆ›å»º
    bst.stretchToRPath();
-   print(bst); //ÉìÖ±³ÉŞà
+   print(bst); //ä¼¸ç›´æˆæº
    while (!bst.empty())
-      bst.remove(bst.root()->data); //Çå¿Õ
+      bst.remove(bst.root()->data); //æ¸…ç©º
    while (bst.size() < n)
-   {                        //Ëæ»ú²åÈë¡¢²éÑ¯¡¢É¾³ı
-      T e = dice((T)n * 3); //[0, 3n)·¶Î§ÄÚµÄe
+   {                        //éšæœºæ’å…¥ã€æŸ¥è¯¢ã€åˆ é™¤
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
       switch (dice(3))
       {
       case 0:
-      { //²éÕÒ£¬³É¹¦ÂÊ <= 33.3%
+      { //æŸ¥æ‰¾ï¼ŒæˆåŠŸç‡ <= 33.3%
          printf("Searching for ");
          print(e);
          printf(" ... ");
@@ -47,7 +47,7 @@ void testBST(int n)
          break;
       }
       case 1:
-      { //É¾³ı£¬³É¹¦ÂÊ <= 33.3%
+      { //åˆ é™¤ï¼ŒæˆåŠŸç‡ <= 33.3%
          printf("Removing ");
          print(e);
          printf(" ... ");
@@ -55,7 +55,7 @@ void testBST(int n)
          break;
       }
       default:
-      { //²åÈë£¬³É¹¦ÂÊ == 100%
+      { //æ’å…¥ï¼ŒæˆåŠŸç‡ == 100%
          printf("Inserting ");
          print(e);
          printf(" ... ");
@@ -65,8 +65,8 @@ void testBST(int n)
       }
    }
    while (bst.size() > 0)
-   {                        //Çå¿Õ
-      T e = dice((T)n * 3); //[0, 3n)·¶Î§ÄÚµÄe
+   {                        //æ¸…ç©º
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
       printf("Removing ");
       print(e);
       printf(" ... ");
@@ -75,7 +75,7 @@ void testBST(int n)
 }
 
 /******************************************************************************************
- * ²âÊÔÖ÷Èë¿Ú
+ * æµ‹è¯•ä¸»å…¥å£
  ******************************************************************************************/
 int main(int argc, char *argv[])
 {
@@ -85,6 +85,6 @@ int main(int argc, char *argv[])
       return 1;
    }
    srand((unsigned int)time(NULL));
-   testBST<int>(atoi(argv[1])); //ÔªËØÀàĞÍ¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+   testBST<int>(atoi(argv[1])); //å…ƒç´ ç±»å‹å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }
