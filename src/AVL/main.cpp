@@ -14,46 +14,71 @@
 /******************************************************************************************
  * Test an AVL
  ******************************************************************************************/
-template <typename T> void  testAVL ( int n ) {
+template <typename T>
+void testAVL(int n)
+{
    AVL<T> avl;
-   while ( avl.size() < n ) {
-      T e = dice ( ( T ) n * 3 ); //[0, 3n)·¶Î§ÄÚµÄe
-      switch ( dice ( 3 ) ) {
-         case 0: { //²éÕÒ£¬³É¹¦ÂÊ <= 33.3%
-            printf ( "Searching for " ); print ( e ); printf ( " ...\n" );
-            BinNodePosi<T> & p = avl.search ( e );
-            p ?
-            printf ( "Found with" ), print ( p ), printf ( "\n" ) :
-            printf ( "Not found\n" );
-            break;
+   while (avl.size() < n)
+   {
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
+      switch (dice(3))
+      {
+      case 0:
+      { //æŸ¥æ‰¾ï¼ŒæˆåŠŸç‡ <= 33.3%
+         printf("Searching for ");
+         print(e);
+         printf(" ...\n");
+         BinNodePosi<T> &p = avl.search(e);
+         p ? printf("Found with"), print(p), printf("\n") : printf("Not found\n");
+         break;
+      }
+      case 1:
+      { //åˆ é™¤ï¼ŒæˆåŠŸç‡ <= 33.3%
+         printf("Removing ");
+         print(e);
+         printf(" ...\n");
+         avl.remove(e) ? printf("Done\n"), print(avl) : printf("Not exists\n");
+         break;
+      }
+      default:
+      { //æ’å…¥ï¼ŒæˆåŠŸç‡ == 100%
+         printf("Inserting ");
+         print(e);
+         printf(" ...\n");
+         BinNodePosi<T> p = avl.insert(e);
+         if (p->data != e)
+         {
+            print(p->data);
+            printf(" <> ");
+            print(e);
+            printf("\n");
          }
-         case 1: { //É¾³ı£¬³É¹¦ÂÊ <= 33.3%
-            printf ( "Removing " ); print ( e ); printf ( " ...\n" );
-            avl.remove ( e ) ? printf ( "Done\n" ), print ( avl ) : printf ( "Not exists\n" );
-            break;
-         }
-         default: {//²åÈë£¬³É¹¦ÂÊ == 100%
-            printf ( "Inserting " ); print ( e ); printf ( " ...\n" );
-            BinNodePosi<T> p = avl.insert ( e );
-            if ( p->data != e ) { print ( p->data ); printf ( " <> " ); print ( e ); printf ( "\n" ); }
-            printf ( "Done with" ), print ( p ), printf ( "\n" ), print ( avl );
-            break;
-         }
+         printf("Done with"), print(p), printf("\n"), print(avl);
+         break;
+      }
       }
    }
-   while ( avl.size() > 0 ) {
-      T e = dice ( ( T ) n * 3 ); //[0, 3n)·¶Î§ÄÚµÄe
-      printf ( "Removing " ); print ( e ); printf ( " ...\n" );
-      avl.remove ( e ) ? printf ( "Done\n" ), print ( avl ) : printf ( "Not exists\n" );
+   while (avl.size() > 0)
+   {
+      T e = dice((T)n * 3); //[0, 3n)èŒƒå›´å†…çš„e
+      printf("Removing ");
+      print(e);
+      printf(" ...\n");
+      avl.remove(e) ? printf("Done\n"), print(avl) : printf("Not exists\n");
    }
 }
 
 /******************************************************************************************
- * ²âÊÔÖ÷Èë¿Ú
+ * æµ‹è¯•ä¸»å…¥å£
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand ( ( unsigned int ) time ( NULL ) );
-   testAVL<int> ( atoi ( argv[1] ) ); //ÔªËØÀàĞÍ¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+int main(int argc, char *argv[])
+{
+   if (2 > argc)
+   {
+      printf("Usage: %s <size of test>\a\a\n", argv[0]);
+      return 1;
+   }
+   srand((unsigned int)time(NULL));
+   testAVL<int>(atoi(argv[1])); //å…ƒç´ ç±»å‹å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }
