@@ -11,45 +11,62 @@
 #include "Bitmap_O1_init.h"
 
 /******************************************************************************************
- * ²âÊÔÎ»Í¼
+ * æµ‹è¯•ä½å›¾
  ******************************************************************************************/
-int testBitmap ( int n, int t ) {
-   bool* B = new bool[n]; //³£¹æÎ»Í¼
-   Bitmap M ( n ); //¸ßĞ§Î»Í¼
-   while ( t-- > 0 ) { //ÖØ¸´Ê¹ÓÃÎ»Í¼¶à´Î
-      memset ( B, 0, n * sizeof ( bool ) ); //ÖğÎ»ÇåÁã£¬O(n)
-      M.reset(); //Âß¼­ÇåÁã£¬O(1)
-      for ( int i = 0; i < 3 * n; i++ ) { //·´¸´µØ
-         Rank k = dice ( n ); //ÔÚËæ»úÎ»ÖÃÉÏ
-         if ( dice ( 2 ) ) { //ÒÔ50%µÄ¸ÅÂÊ²åÈë
-            B[k] = true; M.set ( k );
-         } else { //»ò50%µÄ¸ÅÂÊÇå³ı
-            B[k] = false; M.clear ( k );
+int testBitmap(int n, int t)
+{
+   bool *B = new bool[n]; //å¸¸è§„ä½å›¾
+   Bitmap M(n);           //é«˜æ•ˆä½å›¾
+   while (t-- > 0)
+   {                                  //é‡å¤ä½¿ç”¨ä½å›¾å¤šæ¬¡
+      memset(B, 0, n * sizeof(bool)); //é€ä½æ¸…é›¶ï¼ŒO(n)
+      M.reset();                      //é€»è¾‘æ¸…é›¶ï¼ŒO(1)
+      for (int i = 0; i < 3 * n; i++)
+      {                    //åå¤åœ°
+         Rank k = dice(n); //åœ¨éšæœºä½ç½®ä¸Š
+         if (dice(2))
+         { //ä»¥50%çš„æ¦‚ç‡æ’å…¥
+            B[k] = true;
+            M.set(k);
+         }
+         else
+         { //æˆ–50%çš„æ¦‚ç‡æ¸…é™¤
+            B[k] = false;
+            M.clear(k);
          }
       }
-      //M.set( 29 ); //ÓĞÊ±¿ÉÂô¸öÆÆÕÀ£¬ÒÔ·´Ïò²âÊÔ±¾²âÊÔ³ÌĞò
+      // M.set( 29 ); //æœ‰æ—¶å¯å–ä¸ªç ´ç»½ï¼Œä»¥åå‘æµ‹è¯•æœ¬æµ‹è¯•ç¨‹åº
       int k;
-      for ( k = 0; k < n; k++ ) //ÖğÎ»µØ¶Ô±È
-         if ( B[k] != M.test ( k ) ) //Ò»µ©·¢ÏÖ²»ºÏ
-            break; //Ëæ¼´ÍË³ö
-      if ( k < n ) { //²¢±¨¸æ£¨assert:: k == n+1£©
-         printf ( "\n B[]: " );
-         for ( int j = 0; j <= k; j++ ) printf ( "%6c", B[j] ? 'x' : ' ' );
-         printf ( "\n M[]: " );
-         for ( int j = 0; j <= k; j++ ) printf ( "%6c", M.test ( j ) ? 'x' : ' ' );
-         printf ( "\n" );
-      } else
-         printf( "Test %4d OK\n", t );
+      for (k = 0; k < n; k++)   //é€ä½åœ°å¯¹æ¯”
+         if (B[k] != M.test(k)) //ä¸€æ—¦å‘ç°ä¸åˆ
+            break;              //éšå³é€€å‡º
+      if (k < n)
+      { //å¹¶æŠ¥å‘Šï¼ˆassert:: k == n+1ï¼‰
+         printf("\n B[]: ");
+         for (int j = 0; j <= k; j++)
+            printf("%6c", B[j] ? 'x' : ' ');
+         printf("\n M[]: ");
+         for (int j = 0; j <= k; j++)
+            printf("%6c", M.test(j) ? 'x' : ' ');
+         printf("\n");
+      }
+      else
+         printf("Test %4d OK\n", t);
    }
-   delete [] B;
+   delete[] B;
    return 0;
 }
 
 /******************************************************************************************
- * ²âÊÔÎ»Í¼
+ * æµ‹è¯•ä½å›¾
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 3 > argc ) { printf ( "Usage: %s <bitmap size> <#test>\a\a\n", argv[0] ); return 1; }
-   srand ( ( unsigned int ) time ( NULL ) ); //ÉèÖÃËæ»úÖÖ×Ó
-   return testBitmap ( max(0, atoi(argv[1])), max(0, atoi(argv[2]))); //Æô¶¯²âÊÔ
+int main(int argc, char *argv[])
+{
+   if (3 > argc)
+   {
+      printf("Usage: %s <bitmap size> <#test>\a\a\n", argv[0]);
+      return 1;
+   }
+   srand((unsigned int)time(NULL));                                 //è®¾ç½®éšæœºç§å­
+   return testBitmap(max(0, atoi(argv[1])), max(0, atoi(argv[2]))); //å¯åŠ¨æµ‹è¯•
 }
