@@ -10,10 +10,10 @@
 
 template <typename T>
 void List<T>::reverse()
-{ //Ç°ºóµ¹ÖÃ
+{ //å‰åå€’ç½®
    if (_size < 2)
-      return;                                       //Æ½·²Çé¿ö
-   for (ListNodePosi<T> p = header; p; p = p->pred) //×ÔÇ°Ïòºó£¬ÒÀ´Î
-      swap(p->pred, p->succ);                       //½»»»¸÷½ÚµãµÄÇ°Çı¡¢ºó¼ÌÖ¸Õë
-   swap(header, trailer);                           //Í·¡¢Î²½Úµã»¥»»
+      return;                                       //å¹³å‡¡æƒ…å†µ
+   for (ListNodePosi<T> p = header; p; p = p->pred) //è‡ªå‰å‘åï¼Œä¾æ¬¡
+      swap(p->pred, p->succ);                       //äº¤æ¢å„èŠ‚ç‚¹çš„å‰é©±ã€åç»§æŒ‡é’ˆ
+   swap(header, trailer);                           //å¤´ã€å°¾èŠ‚ç‚¹äº’æ¢
 }

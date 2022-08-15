@@ -6,10 +6,11 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "fac.h"
+/*DSA*/ #include "fac.h"
 
-int main ( int argc, char* argv[] ) { //Ω◊≥À‘ÀÀ„≤‚ ‘
-   for ( int i = 0; i < 25; i++ )
-      printf ( "\t%d\t%22I64d\t%22I64d\n", i, facI ( i ), facR ( i ) );
+int main(int argc, char *argv[])
+{ //Èò∂‰πòËøêÁÆóÊµãËØï
+   for (int i = 0; i < 25; i++)
+      printf("\t%d\t%22I64d\t%22I64d\n", i, facI(i), facR(i));
    return 0;
 }

@@ -8,5 +8,5 @@
 
 #pragma once
 
-#include "List/List.h" //用List实现
-using HuffForest = List<HuffTree*>; //Huffman森林
+#include "List/List.h"               //鐢↙ist瀹炵幇
+using HuffForest = List<HuffTree *>; // Huffman妫灄

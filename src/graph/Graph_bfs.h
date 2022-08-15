@@ -8,28 +8,40 @@
 
 #pragma once
 
-template <typename Tv, typename Te> //¹ã¶ÈÓÅÏÈËÑË÷BFSËã·¨£¨È«Í¼£©
-void Graph<Tv, Te>::bfs ( Rank s ) { //s < n
-   reset(); int clock = 0; Rank v = s; //³õÊ¼»¯
-   do //ÖğÒ»¼ì²éËùÓĞ¶¥µã
-      if ( UNDISCOVERED == status ( v ) ) //Ò»µ©Óöµ½ÉĞÎ´·¢ÏÖµÄ¶¥µã
-         BFS ( v, clock ); //¼´´Ó¸Ã¶¥µã³ö·¢Æô¶¯Ò»´ÎBFS
-   while ( s != ( v = ( ( v+1 ) % n ) ) ); //°´ĞòºÅ¼ì²é£¬¹Ê²»Â©²»ÖØ
+template <typename Tv, typename Te> //å¹¿åº¦ä¼˜å…ˆæœç´¢BFSç®—æ³•ï¼ˆå…¨å›¾ï¼‰
+void Graph<Tv, Te>::bfs(Rank s)
+{ // s < n
+   reset();
+   int clock = 0;
+   Rank v = s;                       //åˆå§‹åŒ–
+   do                                //é€ä¸€æ£€æŸ¥æ‰€æœ‰é¡¶ç‚¹
+      if (UNDISCOVERED == status(v)) //ä¸€æ—¦é‡åˆ°å°šæœªå‘ç°çš„é¡¶ç‚¹
+         BFS(v, clock);              //å³ä»è¯¥é¡¶ç‚¹å‡ºå‘å¯åŠ¨ä¸€æ¬¡BFS
+   while (s != (v = ((v + 1) % n))); //æŒ‰åºå·æ£€æŸ¥ï¼Œæ•…ä¸æ¼ä¸é‡
 }
 
-template <typename Tv, typename Te> //¹ã¶ÈÓÅÏÈËÑË÷BFSËã·¨£¨µ¥¸öÁ¬Í¨Óò£©
-void Graph<Tv, Te>::BFS ( Rank v, int& clock ) { //v < n
-   Queue<Rank> Q; //ÒıÈë¸¨Öú¶ÓÁĞ
-   status ( v ) = DISCOVERED; Q.enqueue ( v ); //³õÊ¼»¯Æğµã
-   while ( !Q.empty() ) { //ÔÚQ±ä¿ÕÖ®Ç°£¬²»¶Ï
-      Rank v = Q.dequeue(); dTime ( v ) = ++clock; //È¡³ö¶ÓÊ×¶¥µãv
-      for ( Rank u = firstNbr ( v ); -1 < u; u = nextNbr ( v, u ) ) //Ã¶¾ÙvµÄËùÓĞÁÚ¾Óu
-         if ( UNDISCOVERED == status ( u ) ) { //ÈôuÉĞÎ´±»·¢ÏÖ£¬Ôò
-            status ( u ) = DISCOVERED; Q.enqueue ( u ); //·¢ÏÖ¸Ã¶¥µã
-            type ( v, u ) = TREE; parent ( u ) = v; //ÒıÈëÊ÷±ßÍØÕ¹Ö§³ÅÊ÷
-         } else { //ÈôuÒÑ±»·¢ÏÖ£¬»òÕßÉõÖÁÒÑ·ÃÎÊÍê±Ï£¬Ôò
-            type ( v, u ) = CROSS; //½«(v, u)¹éÀàÓÚ¿ç±ß
+template <typename Tv, typename Te> //å¹¿åº¦ä¼˜å…ˆæœç´¢BFSç®—æ³•ï¼ˆå•ä¸ªè¿é€šåŸŸï¼‰
+void Graph<Tv, Te>::BFS(Rank v, int &clock)
+{                 // v < n
+   Queue<Rank> Q; //å¼•å…¥è¾…åŠ©é˜Ÿåˆ—
+   status(v) = DISCOVERED;
+   Q.enqueue(v); //åˆå§‹åŒ–èµ·ç‚¹
+   while (!Q.empty())
+   { //åœ¨Qå˜ç©ºä¹‹å‰ï¼Œä¸æ–­
+      Rank v = Q.dequeue();
+      dTime(v) = ++clock;                                    //å–å‡ºé˜Ÿé¦–é¡¶ç‚¹v
+      for (Rank u = firstNbr(v); - 1 < u; u = nextNbr(v, u)) //æšä¸¾vçš„æ‰€æœ‰é‚»å±…u
+         if (UNDISCOVERED == status(u))
+         { //è‹¥uå°šæœªè¢«å‘ç°ï¼Œåˆ™
+            status(u) = DISCOVERED;
+            Q.enqueue(u); //å‘ç°è¯¥é¡¶ç‚¹
+            type(v, u) = TREE;
+            parent(u) = v; //å¼•å…¥æ ‘è¾¹æ‹“å±•æ”¯æ’‘æ ‘
          }
-      status ( v ) = VISITED; //ÖÁ´Ë£¬µ±Ç°¶¥µã·ÃÎÊÍê±Ï
+         else
+         {                      //è‹¥uå·²è¢«å‘ç°ï¼Œæˆ–è€…ç”šè‡³å·²è®¿é—®å®Œæ¯•ï¼Œåˆ™
+            type(v, u) = CROSS; //å°†(v, u)å½’ç±»äºè·¨è¾¹
+         }
+      status(v) = VISITED; //è‡³æ­¤ï¼Œå½“å‰é¡¶ç‚¹è®¿é—®å®Œæ¯•
    }
 }

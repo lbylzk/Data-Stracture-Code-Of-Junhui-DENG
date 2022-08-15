@@ -8,5 +8,5 @@
 
 #pragma once
 
-#include "PQ_ComplHeap/PQ_ComplHeap.h" //用PQ_ComplHeap实现
-using HuffForest = PQ_ComplHeap<HuffTree*>; //Huffman森林
+#include "PQ_ComplHeap/PQ_ComplHeap.h"       //鐢≒Q_ComplHeap瀹炵幇
+using HuffForest = PQ_ComplHeap<HuffTree *>; // Huffman妫灄

@@ -1,28 +1,44 @@
-#include "stack/stack.h" //½èÖúÕ»½á¹¹£¬¼ÆËãÖ±·½Í¼H[]ÖĞµÄ×î´ó¾ØĞÎ£¨²¢ÁĞÊ±È¡×î¿¿×óÕß£©
+#include "stack/stack.h" //å€ŸåŠ©æ ˆç»“æ„ï¼Œè®¡ç®—ç›´æ–¹å›¾H[]ä¸­çš„æœ€å¤§çŸ©å½¢ï¼ˆå¹¶åˆ—æ—¶å–æœ€é å·¦è€…ï¼‰
 
-__int64 mr_STACKS( int H[], int n, int& mr_r, int& mr_s, int& mr_t ) { //³ıÄ©Ïî-1ÉÚ±ø£¬H[]½Ô·Ç¸º
-   int* s = new int[n]; Stack<int> S; //×ÔÓÒ¿É¼ûÏîµÄÖÈ
-   for( int r = 0; r < n; r++ ) { //ÒÀ´Î¼ÆËã³ö
-      while ( !S.empty() && H[S.top()] >= H[r] ) S.pop(); //Ã¿Ò»¸ös(r)
+__int64 mr_STACKS(int H[], int n, int &mr_r, int &mr_s, int &mr_t)
+{ //é™¤æœ«é¡¹-1å“¨å…µï¼ŒH[]çš†éè´Ÿ
+   int *s = new int[n];
+   Stack<int> S; //è‡ªå³å¯è§é¡¹çš„ç§©
+   for (int r = 0; r < n; r++)
+   { //ä¾æ¬¡è®¡ç®—å‡º
+      while (!S.empty() && H[S.top()] >= H[r])
+         S.pop(); //æ¯ä¸€ä¸ªs(r)
       s[r] = S.empty() ? 0 : 1 + S.top();
       S.push(r);
    }
-   while( !S.empty() ) S.pop();
+   while (!S.empty())
+      S.pop();
 
-   int* t = new int[n]; Stack<int> T; //×Ô×ó¿É¼ûÏîµÄÖÈ
-   for( int r = n-1; -1 < r; r-- ) { //ÒÀ´Î¼ÆËã³ö
-      while ( !T.empty() && H[r] <= H[T.top()] ) T.pop(); //Ã¿Ò»¸öt(r)
+   int *t = new int[n];
+   Stack<int> T; //è‡ªå·¦å¯è§é¡¹çš„ç§©
+   for (int r = n - 1; - 1 < r; r--)
+   { //ä¾æ¬¡è®¡ç®—å‡º
+      while (!T.empty() && H[r] <= H[T.top()])
+         T.pop(); //æ¯ä¸€ä¸ªt(r)
       t[r] = T.empty() ? n : T.top();
       T.push(r);
    }
-   while( !T.empty() ) T.pop();
+   while (!T.empty())
+      T.pop();
 
    __int64 maxRect = 0;
-   for( int r = 0; r < n; r++ ) {
+   for (int r = 0; r < n; r++)
+   {
       __int64 mR = H[r] * (t[r] - s[r]);
-      if ( maxRect < mR )
-         { maxRect = mR; mr_r = r; mr_s = s[r]; mr_t = t[r]; }
+      if (maxRect < mR)
+      {
+         maxRect = mR;
+         mr_r = r;
+         mr_s = s[r];
+         mr_t = t[r];
+      }
    }
-   delete [] s; delete [] t;
+   delete[] s;
+   delete[] t;
    return maxRect;
-} //Ã¿Ïî½øÕ»¡¢³öÕ»²»¹ı³£Êı´Î£¬ÀÛ¼Æ³É±¾O(n)
+} //æ¯é¡¹è¿›æ ˆã€å‡ºæ ˆä¸è¿‡å¸¸æ•°æ¬¡ï¼Œç´¯è®¡æˆæœ¬O(n)

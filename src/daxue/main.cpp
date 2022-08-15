@@ -6,25 +6,30 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
-#define nStep  8
-char* level[8] =
-{"Ã÷Ã÷µÂì¶ÌìÏÂ", "ÖÎ‡ø", "ıR¼Ò", "ĞŞÉí", "ÕıĞÄ", "Õ\Òâ", "ÖÂÖª", "¸ñÎï"};
+#define nStep 8
+char *level[8] =
+    {"æ˜æ˜å¾·æ–¼å¤©ä¸‹", "æ²»åœ‹", "é½Šå®¶", "ä¿®èº«", "æ­£å¿ƒ", "èª æ„", "è‡´çŸ¥", "æ ¼ç‰©"};
 
-void phase ( int n, bool done ) {
-   for ( int i = 0; i < n; i++ )  cout << "\t©¦";
-   cout << "\t" << ( done ? "©¸" : "©°" ) << level[n] << endl;
+void phase(int n, bool done)
+{
+   for (int i = 0; i < n; i++)
+      cout << "\tâ”‚";
+   cout << "\t" << (done ? "â””" : "â”Œ") << level[n] << endl;
 }
 
-void towardsDaxue ( int n ) {
-   phase ( n, false );
-   if ( n + 1 < nStep ) towardsDaxue ( n + 1 );
-   phase ( n, true );
+void towardsDaxue(int n)
+{
+   phase(n, false);
+   if (n + 1 < nStep)
+      towardsDaxue(n + 1);
+   phase(n, true);
 }
 
-int main ( char* argv[], int argc ) {
-   towardsDaxue ( 0 );
+int main(char *argv[], int argc)
+{
+   towardsDaxue(0);
    return 0;
 }

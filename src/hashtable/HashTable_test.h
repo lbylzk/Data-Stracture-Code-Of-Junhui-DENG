@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #include "_share/util.h"

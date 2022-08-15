@@ -9,17 +9,24 @@
 #pragma once
 
 /******************************************************************************************
- * ÖØÉ¢ÁĞ£º¿ÕÍ°Ì«ÉÙÊ±¶ÔÉ¢ÁĞ±íÖØĞÂÕûÀí£ºÀ©Èİ£¬ÔÙ½«´ÊÌõÖğÒ»ÒÆÈëĞÂ±í
- * É¢ÁĞº¯ÊıµÄ¶¨Ö·Óë±í³¤MÖ±½ÓÏà¹Ø£¬¹Ê²»¿É¼òµ¥µØÅúÁ¿¸´ÖÆÔ­Í°Êı×é
+ * é‡æ•£åˆ—ï¼šç©ºæ¡¶å¤ªå°‘æ—¶å¯¹æ•£åˆ—è¡¨é‡æ–°æ•´ç†ï¼šæ‰©å®¹ï¼Œå†å°†è¯æ¡é€ä¸€ç§»å…¥æ–°è¡¨
+ * æ•£åˆ—å‡½æ•°çš„å®šå€ä¸è¡¨é•¿Mç›´æ¥ç›¸å…³ï¼Œæ•…ä¸å¯ç®€å•åœ°æ‰¹é‡å¤åˆ¶åŸæ¡¶æ•°ç»„
  ******************************************************************************************/
-template <typename K, typename V> void Hashtable<K, V>::rehash() {
-   int oldM = M; Entry<K, V>** oldHt = ht;
-   M = primeNLT( 4 * N, 1048576, PRIME_TABLE ); //ÈİÁ¿ÖÁÉÙ¼Ó±¶£¨ÈôÀÁ¶èÉ¾³ıºÜ¶à£¬¿ÉÄÜ·´¶øËõÈİ£©
-   ht = new Entry<K, V>*[M]; N = 0; memset( ht, 0, sizeof( Entry<K, V>* ) * M ); //Í°Êı×é
-   release( removed ); removed = new Bitmap( M ); L = 0; //ÀÁ¶èÉ¾³ı±ê¼Ç
+template <typename K, typename V>
+void Hashtable<K, V>::rehash()
+{
+   int oldM = M;
+   Entry<K, V> **oldHt = ht;
+   M = primeNLT(4 * N, 1048576, PRIME_TABLE); //å®¹é‡è‡³å°‘åŠ å€ï¼ˆè‹¥æ‡’æƒ°åˆ é™¤å¾ˆå¤šï¼Œå¯èƒ½åè€Œç¼©å®¹ï¼‰
+   ht = new Entry<K, V> *[M];
+   N = 0;
+   memset(ht, 0, sizeof(Entry<K, V> *) * M); //æ¡¶æ•°ç»„
+   release(removed);
+   removed = new Bitmap(M);
+   L = 0; //æ‡’æƒ°åˆ é™¤æ ‡è®°
    //*DSA*/printf("A bucket array has been created with capacity = %d\n\n", M);
-   for ( int i = 0; i < oldM; i++ ) //É¨ÃèÔ­±í
-      if ( oldHt[i] ) //½«Ã¿¸ö·Ç¿ÕÍ°ÖĞµÄ´ÊÌõ
-         put( oldHt[i]->key, oldHt[i]->value ); //×ªÈëĞÂ±í
-   release( oldHt ); //ÊÍ·Å¡ª¡ªÒòËùÓĞ´ÊÌõ¾ùÒÑ×ªÒÆ£¬¹ÊÖ»ĞèÊÍ·ÅÍ°Êı×é±¾Éí
+   for (int i = 0; i < oldM; i++)             //æ‰«æåŸè¡¨
+      if (oldHt[i])                           //å°†æ¯ä¸ªéç©ºæ¡¶ä¸­çš„è¯æ¡
+         put(oldHt[i]->key, oldHt[i]->value); //è½¬å…¥æ–°è¡¨
+   release(oldHt);                            //é‡Šæ”¾â€”â€”å› æ‰€æœ‰è¯æ¡å‡å·²è½¬ç§»ï¼Œæ•…åªéœ€é‡Šæ”¾æ¡¶æ•°ç»„æœ¬èº«
 }

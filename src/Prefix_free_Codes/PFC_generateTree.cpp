@@ -6,20 +6,23 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "PFC.h"
+#include "PFC.h"
 
-PFCTree* generateTree ( PFCForest* forest ) { //¹¹ÔìPFCÊ÷
-   srand ( ( unsigned int ) time ( NULL ) ); //ÕâÀï½«Ëæ»úÈ¡Ê÷ºÏ²¢£¬¹ÊÏÈÉèÖÃËæ»úÖÖ×Ó
-   while ( 1 < forest->size() ) { //¹²×ö|forest|-1´ÎºÏ²¢
-      PFCTree* s = new PFCTree; s->insert ( '^' ); //´´½¨ĞÂÊ÷£¨¸ù±ê¼ÇÎª"^"£©
-      Rank r1 = rand() % forest->size(); //Ëæ»úÑ¡È¡r1£¬ÇÒ
-      s->attach ( ( *forest ) [r1], s->root() ); //×÷Îª×ó×ÓÊ÷½ÓÈëºó
-      forest->remove ( r1 ); //Ëæ¼´ÌŞ³ı
-      Rank r2 = rand() % forest->size(); //Ëæ»úÑ¡È¡r2£¬ÇÒ
-      s->attach ( s->root(), ( *forest ) [r2] ); //×÷ÎªÓÒ×ÓÊ÷½ÓÈëºó
-      forest->remove ( r2 ); //Ëæ¼´ÌŞ³ı
-      forest->insert ( forest->size(), s ); //ºÏ²¢ºóµÄPFCÊ÷ÖØĞÂÖ²ÈëPFCÉ­ÁÖ
-      /*DSA*/printf ( "%c and %c merged\n", s->root()->lc->data, s->root()->rc->data );
+PFCTree *generateTree(PFCForest *forest)
+{                                   //æ„é€ PFCæ ‘
+   srand((unsigned int)time(NULL)); //è¿™é‡Œå°†éšæœºå–æ ‘åˆå¹¶ï¼Œæ•…å…ˆè®¾ç½®éšæœºç§å­
+   while (1 < forest->size())
+   { //å…±åš|forest|-1æ¬¡åˆå¹¶
+      PFCTree *s = new PFCTree;
+      s->insert('^');                      //åˆ›å»ºæ–°æ ‘ï¼ˆæ ¹æ ‡è®°ä¸º"^"ï¼‰
+      Rank r1 = rand() % forest->size();   //éšæœºé€‰å–r1ï¼Œä¸”
+      s->attach((*forest)[r1], s->root()); //ä½œä¸ºå·¦å­æ ‘æ¥å…¥å
+      forest->remove(r1);                  //éšå³å‰”é™¤
+      Rank r2 = rand() % forest->size();   //éšæœºé€‰å–r2ï¼Œä¸”
+      s->attach(s->root(), (*forest)[r2]); //ä½œä¸ºå³å­æ ‘æ¥å…¥å
+      forest->remove(r2);                  //éšå³å‰”é™¤
+      forest->insert(forest->size(), s);   //åˆå¹¶åçš„PFCæ ‘é‡æ–°æ¤å…¥PFCæ£®æ—
+      printf("%c and %c merged\n", s->root()->lc->data, s->root()->rc->data);
    }
-   return ( *forest ) [0]; //ÖÁ´Ë£¬É­ÁÖÖĞÉĞ´æµÄ×îºóÒ»¿ÃÊ÷£¬¼´È«¾ÖPFC±àÂëÊ÷
+   return (*forest)[0]; //è‡³æ­¤ï¼Œæ£®æ—ä¸­å°šå­˜çš„æœ€åä¸€æ£µæ ‘ï¼Œå³å…¨å±€PFCç¼–ç æ ‘
 }

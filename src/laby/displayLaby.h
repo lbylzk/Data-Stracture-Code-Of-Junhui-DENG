@@ -9,44 +9,55 @@
 #pragma once
 
 /******************************************************************************************
- *   Êä³öÄ³Ò»ÃÔ¹¬¸ñµÄÐÅÏ¢
+ *   è¾“å‡ºæŸä¸€è¿·å®«æ ¼çš„ä¿¡æ¯
  ******************************************************************************************/
-void printLabyCell ( Cell* elem ) {
-   printf ( "%d -> (%d, %d) -> %d\n",
-            ( ( Cell* ) elem )->incoming,
-            ( ( Cell* ) elem )->x,
-            ( ( Cell* ) elem )->y,
-            ( ( Cell* ) elem )->outgoing );
+void printLabyCell(Cell *elem)
+{
+   printf("%d -> (%d, %d) -> %d\n",
+          ((Cell *)elem)->incoming,
+          ((Cell *)elem)->x,
+          ((Cell *)elem)->y,
+          ((Cell *)elem)->outgoing);
 }
 
 /******************************************************************************************
- * ÏÔÊ¾ÃÔ¹¬
+ * æ˜¾ç¤ºè¿·å®«
  ******************************************************************************************/
-void displayLaby() { //©¼©¸©´©°©¦©¤
-   static char*   pattern[5][5] = {
-      "©à", "©à", "©à", "©à", "©à",
-      "©à", "  ", "©°", "©¤", "©¸",
-      "©à", "©°", "  ", "©´", "©¦",
-      "©à", "©¤", "©´", "  ", "©¼",
-      "©à", "©¸", "©¦", "©¼", "  "
-   };
-   system ( "cls" );
-   printf ( "  " );
-   for ( int j = 0; j < labySize; j++ )
-      ( j < 10 ) ? printf ( "%2X", j ) : printf ( " %c", 'A' - 10 + j );
-   printf ( "\n" );
-   for ( int j = 0; j < labySize; j++ ) {
-      ( j < 10 ) ? printf ( "%2X", j ) : printf ( " %c", 'A' - 10 + j );
-      for ( int i = 0; i < labySize; i++ )
-         if ( goalCell == &laby[i][j] )
-            printf ( "©†" );
+void displayLaby()
+{ //â”˜â””â”â”Œâ”‚â”€
+   static char *pattern[5][5] = {
+       "â”¼", "â”¼", "â”¼", "â”¼", "â”¼",
+       "â”¼", "  ", "â”Œ", "â”€", "â””",
+       "â”¼", "â”Œ", "  ", "â”", "â”‚",
+       "â”¼", "â”€", "â”", "  ", "â”˜",
+       "â”¼", "â””", "â”‚", "â”˜", "  "};
+   system("cls");
+   printf("  ");
+   for (int j = 0; j < labySize; j++)
+      (j < 10) ? printf("%2X", j) : printf(" %c", 'A' - 10 + j);
+   printf("\n");
+   for (int j = 0; j < labySize; j++)
+   {
+      (j < 10) ? printf("%2X", j) : printf(" %c", 'A' - 10 + j);
+      for (int i = 0; i < labySize; i++)
+         if (goalCell == &laby[i][j])
+            printf("ï¹©");
          else
-            switch ( laby[i][j].status ) {
-               case WALL:  printf ( "¨€" );   break;
-               case BACKTRACKED: printf ( "¡ð" );   break;
-               case AVAILABLE: printf ( "  " );   break;
-               default   : printf ( "%s", pattern[laby[i][j].outgoing][laby[i][j].incoming] );   break;
+            switch (laby[i][j].status)
+            {
+            case WALL:
+               printf("â–ˆ");
+               break;
+            case BACKTRACKED:
+               printf("â—‹");
+               break;
+            case AVAILABLE:
+               printf("  ");
+               break;
+            default:
+               printf("%s", pattern[laby[i][j].outgoing][laby[i][j].incoming]);
+               break;
             }
-      printf ( "\n" );
-   }//for
-}//displayLaby
+      printf("\n");
+   } // for
+} // displayLaby

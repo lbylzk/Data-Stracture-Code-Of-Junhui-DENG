@@ -6,11 +6,13 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-__int64 powerBF ( __int64 a, int n ) { //a^nËã·¨£¨ÂùÁ¦°æ£©£ºn >= 0
-   __int64 pow = 1; //O(1)
-   while ( 0 < n ) { //O(n)
-      pow *= a; //O(1)
-      n--; //O(1)
+__int64 powerBF(__int64 a, int n)
+{                   // a^nç®—æ³•ï¼ˆè›®åŠ›ç‰ˆï¼‰ï¼šn >= 0
+   __int64 pow = 1; // O(1)
+   while (0 < n)
+   {            // O(n)
+      pow *= a; // O(1)
+      n--;      // O(1)
    }
-   return pow; //O(1)
-} //powerBF()
+   return pow; // O(1)
+} // powerBF()

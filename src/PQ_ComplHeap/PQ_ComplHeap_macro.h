@@ -8,15 +8,12 @@
 
 #pragma once
 
-#define  Parent(i)         ( ( ( i ) - 1 ) >> 1 ) //PQ[i]µÄ¸¸½Úµã£¨floor((i-1)/2)£¬iÎÞÂÛÕý¸º£©
-#define  LChild(i)         ( 1 + ( ( i ) << 1 ) ) //PQ[i]µÄ×óº¢×Ó
-#define  RChild(i)         ( ( 1 + ( i ) ) << 1 ) //PQ[i]µÄÓÒº¢×Ó
-#define  InHeap(n, i)      ( ( ( -1 ) < ( i ) ) && ( ( i ) < ( n ) ) ) //ÅÐ¶ÏPQ[i]ÊÇ·ñºÏ·¨
-#define  LChildValid(n, i) InHeap( n, LChild( i ) ) //ÅÐ¶ÏPQ[i]ÊÇ·ñÓÐÒ»¸ö£¨×ó£©º¢×Ó
-#define  RChildValid(n, i) InHeap( n, RChild( i ) ) //ÅÐ¶ÏPQ[i]ÊÇ·ñÓÐÁ½¸öº¢×Ó
-#define  Bigger(PQ, i, j)  ( lt( PQ[i], PQ[j] ) ? j : i ) //È¡´óÕß£¨µÈÊ±Ç°ÕßÓÅÏÈ£©
-#define  ProperParent(PQ, n, i) /*¸¸×Ó£¨ÖÁ¶à£©ÈýÕßÖÐµÄ´óÕß*/ \
-            ( RChildValid(n, i) ? Bigger( PQ, Bigger( PQ, i, LChild(i) ), RChild(i) ) : \
-            ( LChildValid(n, i) ? Bigger( PQ, i, LChild(i) ) : i \
-            ) \
-            ) //ÏàµÈÊ±¸¸½ÚµãÓÅÏÈ£¬Èç´Ë¿É±ÜÃâ²»±ØÒªµÄ½»»»
+#define Parent(i) (((i)-1) >> 1)                                                                                               // PQ[i]çš„çˆ¶èŠ‚ç‚¹ï¼ˆfloor((i-1)/2)ï¼Œiæ— è®ºæ­£è´Ÿï¼‰
+#define LChild(i) (1 + ((i) << 1))                                                                                             // PQ[i]çš„å·¦å­©å­
+#define RChild(i) ((1 + (i)) << 1)                                                                                             // PQ[i]çš„å³å­©å­
+#define InHeap(n, i) (((-1) < (i)) && ((i) < (n)))                                                                             //åˆ¤æ–­PQ[i]æ˜¯å¦åˆæ³•
+#define LChildValid(n, i) InHeap(n, LChild(i))                                                                                 //åˆ¤æ–­PQ[i]æ˜¯å¦æœ‰ä¸€ä¸ªï¼ˆå·¦ï¼‰å­©å­
+#define RChildValid(n, i) InHeap(n, RChild(i))                                                                                 //åˆ¤æ–­PQ[i]æ˜¯å¦æœ‰ä¸¤ä¸ªå­©å­
+#define Bigger(PQ, i, j) (lt(PQ[i], PQ[j]) ? j : i)                                                                            //å–å¤§è€…ï¼ˆç­‰æ—¶å‰è€…ä¼˜å…ˆï¼‰
+#define ProperParent(PQ, n, i)                                                                                                 /*çˆ¶å­ï¼ˆè‡³å¤šï¼‰ä¸‰è€…ä¸­çš„å¤§è€…*/ \
+    (RChildValid(n, i) ? Bigger(PQ, Bigger(PQ, i, LChild(i)), RChild(i)) : (LChildValid(n, i) ? Bigger(PQ, i, LChild(i)) : i)) //ç›¸ç­‰æ—¶çˆ¶èŠ‚ç‚¹ä¼˜å…ˆï¼Œå¦‚æ­¤å¯é¿å…ä¸å¿…è¦çš„äº¤æ¢

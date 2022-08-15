@@ -8,10 +8,18 @@
 
 #pragma once
 
-template <typename T> T PQ_LeftHeap<T>::delMax() {
-   BinNodePosi<T> lHeap = _root->lc; if (lHeap) lHeap->parent = NULL; //×ó×Ó¶Ñ
-   BinNodePosi<T> rHeap = _root->rc; if (rHeap) rHeap->parent = NULL; //ÓÒ×Ó¶Ñ
-   T e = _root->data; delete _root; _size--; //É¾³ı¸ù½Úµã
-   _root = merge ( lHeap, rHeap ); //ºÏ²¢Ô­×ó¡¢ÓÒ×Ó¶Ñ
-   return e; //·µ»ØÔ­¸ù½ÚµãµÄÊı¾İÏî
+template <typename T>
+T PQ_LeftHeap<T>::delMax()
+{
+   BinNodePosi<T> lHeap = _root->lc;
+   if (lHeap)
+      lHeap->parent = NULL; //å·¦å­å †
+   BinNodePosi<T> rHeap = _root->rc;
+   if (rHeap)
+      rHeap->parent = NULL; //å³å­å †
+   T e = _root->data;
+   delete _root;
+   _size--;                     //åˆ é™¤æ ¹èŠ‚ç‚¹
+   _root = merge(lHeap, rHeap); //åˆå¹¶åŸå·¦ã€å³å­å †
+   return e;                    //è¿”å›åŸæ ¹èŠ‚ç‚¹çš„æ•°æ®é¡¹
 }

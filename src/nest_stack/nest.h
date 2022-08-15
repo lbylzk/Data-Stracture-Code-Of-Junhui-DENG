@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #include <cstdio>
@@ -19,6 +19,6 @@ using namespace std;
 
 #include "stack/stack.h"
 
-bool paren ( const char exp[], int lo, int hi );
-void displaySubstring ( const char exp[], int lo, int hi );
-void displayProgress ( const char exp[], int i, Stack<char> S );
+bool paren(const char exp[], int lo, int hi);
+void displaySubstring(const char exp[], int lo, int hi);
+void displayProgress(const char exp[], int i, Stack<char> S);

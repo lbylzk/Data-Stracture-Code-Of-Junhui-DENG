@@ -8,9 +8,12 @@
 
 #pragma once
 
-template <typename K, typename V> Hashtable<K, V>::~Hashtable() { //Îö¹¹Ç°ÊÍ·ÅÍ°Êı×é¼°·Ç¿Õ´ÊÌõ
-   for ( int i = 0; i < M; i++ ) //ÖğÒ»¼ì²é¸÷Í°
-      if ( ht[i] ) release ( ht[i] ); //ÊÍ·Å·Ç¿ÕµÄÍ°
-   release ( ht ); //ÊÍ·ÅÍ°Êı×é
-   release ( removed ); //ÊÍ·ÅÀÁ¶èÉ¾³ı±ê¼Ç
-} //release()¸ºÔğÊÍ·Å¸´ÔÓ½á¹¹£¬ÓëËã·¨ÎŞÖ±½Ó¹ØÏµ£¬¾ßÌåÊµÏÖÏê¼û´úÂë°ü
+template <typename K, typename V>
+Hashtable<K, V>::~Hashtable()
+{                              //ææ„å‰é‡Šæ”¾æ¡¶æ•°ç»„åŠéç©ºè¯æ¡
+   for (int i = 0; i < M; i++) //é€ä¸€æ£€æŸ¥å„æ¡¶
+      if (ht[i])
+         release(ht[i]); //é‡Šæ”¾éç©ºçš„æ¡¶
+   release(ht);          //é‡Šæ”¾æ¡¶æ•°ç»„
+   release(removed);     //é‡Šæ”¾æ‡’æƒ°åˆ é™¤æ ‡è®°
+} // release()è´Ÿè´£é‡Šæ”¾å¤æ‚ç»“æ„ï¼Œä¸ç®—æ³•æ— ç›´æ¥å…³ç³»ï¼Œå…·ä½“å®ç°è¯¦è§ä»£ç åŒ…

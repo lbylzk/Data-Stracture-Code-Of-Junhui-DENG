@@ -6,21 +6,33 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "PFC.h"
+#include "PFC.h"
 
-void generateCT //Í¨¹ı±éÀú»ñÈ¡¸÷×Ö·ûµÄ±àÂë
-( Bitmap* code, int length, PFCTable* table, BinNodePosi<char> v ) {
-   if ( IsLeaf ( *v ) ) //ÈôÊÇÒ¶½Úµã
-      { table->put ( v->data, code->bits2string ( length ) ); return; }
-   if ( HasLChild ( *v ) ) //Left = 0
-      { code->clear ( length ); generateCT ( code, length + 1, table, v->lc ); }
-   if ( HasRChild ( *v ) ) //right = 1
-      { code->set ( length ); generateCT ( code, length + 1, table, v->rc ); }
+void generateCT //é€šè¿‡éå†è·å–å„å­—ç¬¦çš„ç¼–ç 
+    (Bitmap *code, int length, PFCTable *table, BinNodePosi<char> v)
+{
+   if (IsLeaf(*v)) //è‹¥æ˜¯å¶èŠ‚ç‚¹
+   {
+      table->put(v->data, code->bits2string(length));
+      return;
+   }
+   if (HasLChild(*v)) // Left = 0
+   {
+      code->clear(length);
+      generateCT(code, length + 1, table, v->lc);
+   }
+   if (HasRChild(*v)) // right = 1
+   {
+      code->set(length);
+      generateCT(code, length + 1, table, v->rc);
+   }
 }
 
-PFCTable* generateTable ( PFCTree* tree ) { //¹¹ÔìPFC±àÂë±í
-   PFCTable* table = new PFCTable; //´´½¨ÒÔSkiplistÊµÏÖµÄ±àÂë±í
-   Bitmap* code = new Bitmap; //ÓÃÓÚ¼ÇÂ¼RPSµÄÎ»Í¼
-   generateCT ( code, 0, table, tree->root() ); //±éÀúÒÔ»ñÈ¡¸÷×Ö·û£¨Ò¶½Úµã£©µÄRPS
-   release ( code ); return table; //ÊÍ·Å±àÂëÎ»Í¼£¬·µ»Ø±àÂë±í
-} //release()¸ºÔğÊÍ·Å¸´ÔÓ½á¹¹£¬ÓëËã·¨ÎŞÖ±½Ó¹ØÏµ£¬¾ßÌåÊµÏÖÏê¼û´úÂë°ü
+PFCTable *generateTable(PFCTree *tree)
+{                                            //æ„é€ PFCç¼–ç è¡¨
+   PFCTable *table = new PFCTable;           //åˆ›å»ºä»¥Skiplistå®ç°çš„ç¼–ç è¡¨
+   Bitmap *code = new Bitmap;                //ç”¨äºè®°å½•RPSçš„ä½å›¾
+   generateCT(code, 0, table, tree->root()); //éå†ä»¥è·å–å„å­—ç¬¦ï¼ˆå¶èŠ‚ç‚¹ï¼‰çš„RPS
+   release(code);
+   return table; //é‡Šæ”¾ç¼–ç ä½å›¾ï¼Œè¿”å›ç¼–ç è¡¨
+} // release()è´Ÿè´£é‡Šæ”¾å¤æ‚ç»“æ„ï¼Œä¸ç®—æ³•æ— ç›´æ¥å…³ç³»ï¼Œå…·ä½“å®ç°è¯¦è§ä»£ç åŒ…

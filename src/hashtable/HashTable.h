@@ -8,27 +8,29 @@
 
 #pragma once
 
-#include "Dictionary/Dictionary.h" //ÒıÈë´ÊµäADT
-#include "Bitmap/Bitmap.h" //ÒıÈëÎ»Í¼
+#include "Dictionary/Dictionary.h" //å¼•å…¥è¯å…¸ADT
+#include "Bitmap/Bitmap.h"         //å¼•å…¥ä½å›¾
 
-template <typename K, typename V> //key¡¢value
-class Hashtable : public Dictionary<K, V> { //·ûºÏDictionary½Ó¿ÚµÄHashtableÄ£°åÀà
-   /*DSA*/friend class UniPrint;
+template <typename K, typename V> // keyã€value
+class Hashtable : public Dictionary<K, V>
+{ //ç¬¦åˆDictionaryæ¥å£çš„Hashtableæ¨¡æ¿ç±»
+   /*DSA*/ friend class UniPrint;
+
 private:
-   Entry<K, V>** ht; //Í°Êı×é£¬´æ·Å´ÊÌõÖ¸Õë
-   int M, N, L; //Í°µÄ×ÜÊı¡¢´ÊÌõµÄÊıÄ¿¡¢ÀÁ¶èÉ¾³ı±ê¼ÇµÄÊıÄ¿£¨N + L <= M£©
-   Bitmap* removed; //ÀÁ¶èÉ¾³ı±ê¼Ç
+   Entry<K, V> **ht; //æ¡¶æ•°ç»„ï¼Œå­˜æ”¾è¯æ¡æŒ‡é’ˆ
+   int M, N, L;      //æ¡¶çš„æ€»æ•°ã€è¯æ¡çš„æ•°ç›®ã€æ‡’æƒ°åˆ é™¤æ ‡è®°çš„æ•°ç›®ï¼ˆN + L <= Mï¼‰
+   Bitmap *removed;  //æ‡’æƒ°åˆ é™¤æ ‡è®°
 protected:
-   int probe4Hit ( const K& k ); //ÑØ¹Ø¼üÂëk¶ÔÓ¦µÄÊÔÌ½Á´£¬ÕÒµ½´ÊÌõÆ¥ÅäµÄÍ°
-   int probe4Free ( const K& k ); //ÑØ¹Ø¼üÂëk¶ÔÓ¦µÄÊÔÌ½Á´£¬ÕÒµ½Ê×¸ö¿ÉÓÃ¿ÕÍ°
-   void rehash(); //ÖØÉ¢ÁĞËã·¨£ºÀ©³äÍ°Êı×é£¬±£Ö¤×°ÌîÒò×ÓÔÚ¾¯½äÏßÒÔÏÂ
+   int probe4Hit(const K &k);  //æ²¿å…³é”®ç kå¯¹åº”çš„è¯•æ¢é“¾ï¼Œæ‰¾åˆ°è¯æ¡åŒ¹é…çš„æ¡¶
+   int probe4Free(const K &k); //æ²¿å…³é”®ç kå¯¹åº”çš„è¯•æ¢é“¾ï¼Œæ‰¾åˆ°é¦–ä¸ªå¯ç”¨ç©ºæ¡¶
+   void rehash();              //é‡æ•£åˆ—ç®—æ³•ï¼šæ‰©å……æ¡¶æ•°ç»„ï¼Œä¿è¯è£…å¡«å› å­åœ¨è­¦æˆ’çº¿ä»¥ä¸‹
 public:
-   Hashtable ( int c = 5 ); //´´½¨Ò»¸öÈİÁ¿²»Ğ¡ÓÚcµÄÉ¢ÁĞ±í£¨Îª²âÊÔÔİÊ±Ñ¡ÓÃ½ÏĞ¡µÄÄ¬ÈÏÖµ£©
-   ~Hashtable(); //ÊÍ·ÅÍ°Êı×é¼°ÆäÖĞ¸÷£¨·Ç¿Õ£©ÔªËØËùÖ¸ÏòµÄ´ÊÌõ
-   int size() const { return N; } // µ±Ç°µÄ´ÊÌõÊıÄ¿
-   bool put ( K, V ); //²åÈë£¨½ûÖ¹À×Í¬´ÊÌõ£¬¹Ê¿ÉÄÜÊ§°Ü£©
-   V* get ( K k ); //¶ÁÈ¡
-   bool remove ( K k ); //É¾³ı
+   Hashtable(int c = 5);          //åˆ›å»ºä¸€ä¸ªå®¹é‡ä¸å°äºcçš„æ•£åˆ—è¡¨ï¼ˆä¸ºæµ‹è¯•æš‚æ—¶é€‰ç”¨è¾ƒå°çš„é»˜è®¤å€¼ï¼‰
+   ~Hashtable();                  //é‡Šæ”¾æ¡¶æ•°ç»„åŠå…¶ä¸­å„ï¼ˆéç©ºï¼‰å…ƒç´ æ‰€æŒ‡å‘çš„è¯æ¡
+   int size() const { return N; } // å½“å‰çš„è¯æ¡æ•°ç›®
+   bool put(K, V);                //æ’å…¥ï¼ˆç¦æ­¢é›·åŒè¯æ¡ï¼Œæ•…å¯èƒ½å¤±è´¥ï¼‰
+   V *get(K k);                   //è¯»å–
+   bool remove(K k);              //åˆ é™¤
 };
 
 #include "Hashtable_implementation.h"

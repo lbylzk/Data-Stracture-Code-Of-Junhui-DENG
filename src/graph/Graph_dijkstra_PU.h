@@ -8,12 +8,16 @@
 
 #pragma once
 
-template <typename Tv, typename Te> struct DijkPU { //Õë¶ÔDijkstraËã·¨µÄ¶¥µãÓÅÏÈ¼¶¸üĞÂÆ÷
-   virtual void operator() ( Graph<Tv, Te>* g, Rank s, Rank w ) {
-      if ( UNDISCOVERED == g->status ( w ) ) //¶ÔÓÚsÃ¿Ò»ÉĞÎ´±»·¢ÏÖµÄÁÚ½Ó¶¥µãw£¬°´Dijkstra²ßÂÔ
-         if ( g->priority ( w ) > g->priority ( s ) + g->weight ( s, w ) ) { //×öËÉ³Ú
-            g->priority ( w ) = g->priority ( s ) + g->weight ( s, w ); //¸üĞÂÓÅÏÈ¼¶£¨Êı£©
-            g->parent ( w ) = s; //²¢Í¬Ê±¸üĞÂ¸¸½Úµã
+template <typename Tv, typename Te>
+struct DijkPU
+{ //é’ˆå¯¹Dijkstraç®—æ³•çš„é¡¶ç‚¹ä¼˜å…ˆçº§æ›´æ–°å™¨
+   virtual void operator()(Graph<Tv, Te> *g, Rank s, Rank w)
+   {
+      if (UNDISCOVERED == g->status(w)) //å¯¹äºsæ¯ä¸€å°šæœªè¢«å‘ç°çš„é‚»æ¥é¡¶ç‚¹wï¼ŒæŒ‰Dijkstraç­–ç•¥
+         if (g->priority(w) > g->priority(s) + g->weight(s, w))
+         {                                                     //åšæ¾å¼›
+            g->priority(w) = g->priority(s) + g->weight(s, w); //æ›´æ–°ä¼˜å…ˆçº§ï¼ˆæ•°ï¼‰
+            g->parent(w) = s;                                  //å¹¶åŒæ—¶æ›´æ–°çˆ¶èŠ‚ç‚¹
          }
    }
 };

@@ -15,8 +15,8 @@ int List<T>::deduplicate()
    ListNodePosi<T> p = first();
    for (Rank r = 0; p != trailer; p = p->succ) // O(n)
       if (ListNodePosi<T> q = find(p->data, r, p))
-         remove(q); //´ËÊ±qÓëpÀ×Í¬£¬µ«É¾³ıÇ°Õß¸üÎª¼òÃ÷
+         remove(q); //æ­¤æ—¶qä¸pé›·åŒï¼Œä½†åˆ é™¤å‰è€…æ›´ä¸ºç®€æ˜
       else
-         r++;              // rÎªÎŞÖØÇ°×ºµÄ³¤¶È
-   return oldSize - _size; //É¾³ıÔªËØ×ÜÊı
+         r++;              // rä¸ºæ— é‡å‰ç¼€çš„é•¿åº¦
+   return oldSize - _size; //åˆ é™¤å…ƒç´ æ€»æ•°
 }

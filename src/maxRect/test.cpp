@@ -2,55 +2,74 @@
 #include <ctime>
 #include <cstdio>
 
-__int64 mr_STACK ( int H[], int n, int& r, int& s, int& t ); //½èÖúÒ»¸öÕ»£ºO(n)
-__int64 mr_STACKS( int H[], int n, int& r, int& s, int& t ); //½èÖúÁ½¸öÕ»£ºO(n)
-__int64 mr_BRUTE ( int H[], int n, int& r, int& s, int& t ); //ÂùÁ¦£ºO(n^2)
+__int64 mr_STACK(int H[], int n, int &r, int &s, int &t);  //å€ŸåŠ©ä¸€ä¸ªæ ˆï¼šO(n)
+__int64 mr_STACKS(int H[], int n, int &r, int &s, int &t); //å€ŸåŠ©ä¸¤ä¸ªæ ˆï¼šO(n)
+__int64 mr_BRUTE(int H[], int n, int &r, int &s, int &t);  //è›®åŠ›ï¼šO(n^2)
 
 /******************************************************************************************
- * Ö±·½Í¼ÖĞµÄ×î´ó¾ØĞÎ
+ * ç›´æ–¹å›¾ä¸­çš„æœ€å¤§çŸ©å½¢
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   int* H; int n; //¿í¶ÈÎªnµÄÖ±·½Í¼
-   if ( 1 < argc ) { //ÃüÁîĞĞÖ¸¶¨£¬±ÈÈç£º77 4 120 16 96 59 0 15 123 8 79 73 57 96 84 101 26 12 88 81 111 18 87 117 46 90 94 70 125
-      H = new int[ n = argc -1 ];
-      for ( int i = 0; i < n; i++ )
-         H[i] = atoi( argv[i+1] );
-   } else { //Ëæ»úÉú³É
-      srand ( ( unsigned int ) time ( NULL ) );
-      H = new int[ 1 + ( n = rand() % 128 ) ];
-      for ( int i = 0; i < n; i++ )
+int main(int argc, char *argv[])
+{
+   int *H;
+   int n; //å®½åº¦ä¸ºnçš„ç›´æ–¹å›¾
+   if (1 < argc)
+   { //å‘½ä»¤è¡ŒæŒ‡å®šï¼Œæ¯”å¦‚ï¼š77 4 120 16 96 59 0 15 123 8 79 73 57 96 84 101 26 12 88 81 111 18 87 117 46 90 94 70 125
+      H = new int[n = argc - 1];
+      for (int i = 0; i < n; i++)
+         H[i] = atoi(argv[i + 1]);
+   }
+   else
+   { //éšæœºç”Ÿæˆ
+      srand((unsigned int)time(NULL));
+      H = new int[1 + (n = rand() % 128)];
+      for (int i = 0; i < n; i++)
          H[i] = rand() % 128;
    }
 
-   int r, s, t; //×î´ó¾ØĞÎ£ºH[r] x [s, t)
-   __int64 mrBrute = mr_BRUTE( H, n, r = -1, s = -1, t = -1 );
-   printf( "MaxRect Brute-Force  : %I64d = %d x [%d,%d)\n", mrBrute, H[r], s, t );
-   __int64 mrStacks = mr_STACKS( H, n, r = -1, s = -1, t = -1 );
-   printf( "MaxRect using STACKS : %I64d = %d x [%d,%d)\n", mrStacks, H[r], s, t );
-   __int64 mrStack  = mr_STACK ( H, n, r = -1, s = -1, t = -1 );
-   printf( "MaxRect using STACK  : %I64d = %d x [%d,%d)\n", mrStack, H[r], s, t );
+   int r, s, t; //æœ€å¤§çŸ©å½¢ï¼šH[r] x [s, t)
+   __int64 mrBrute = mr_BRUTE(H, n, r = -1, s = -1, t = -1);
+   printf("MaxRect Brute-Force  : %I64d = %d x [%d,%d)\n", mrBrute, H[r], s, t);
+   __int64 mrStacks = mr_STACKS(H, n, r = -1, s = -1, t = -1);
+   printf("MaxRect using STACKS : %I64d = %d x [%d,%d)\n", mrStacks, H[r], s, t);
+   __int64 mrStack = mr_STACK(H, n, r = -1, s = -1, t = -1);
+   printf("MaxRect using STACK  : %I64d = %d x [%d,%d)\n", mrStack, H[r], s, t);
 
-   for ( int i = 0; i < s; i++ ) {
+   for (int i = 0; i < s; i++)
+   {
       printf("%3d:%4d : ", i, H[i]);
-      for ( int j = 0; j < H[i]; j++ ) printf("."); printf("\n");
+      for (int j = 0; j < H[i]; j++)
+         printf(".");
+      printf("\n");
    }
-   for ( int i = s; i < r; i++ ) {
+   for (int i = s; i < r; i++)
+   {
       printf("%3d:%4d : ", i, H[i]);
-      for ( int j = 0; j < H[i]; j++ ) printf( (j < H[r]) ? "#" : "." ); printf("\n");
+      for (int j = 0; j < H[i]; j++)
+         printf((j < H[r]) ? "#" : ".");
+      printf("\n");
    }
    {
       printf("%3d:%4d : ", r, H[r]);
-      for ( int j = 0; j < H[r]; j++ ) printf("O"); printf("\n");
+      for (int j = 0; j < H[r]; j++)
+         printf("O");
+      printf("\n");
    }
-   for ( int i = r+1; i < t; i++ ) {
+   for (int i = r + 1; i < t; i++)
+   {
       printf("%3d:%4d : ", i, H[i]);
-      for ( int j = 0; j < H[i]; j++ ) printf( (j < H[r]) ? "#" : "." ); printf("\n");
+      for (int j = 0; j < H[i]; j++)
+         printf((j < H[r]) ? "#" : ".");
+      printf("\n");
    }
-   for ( int i = t; i < n; i++ ) {
+   for (int i = t; i < n; i++)
+   {
       printf("%3d:%4d : ", i, H[i]);
-      for ( int j = 0; j < H[i]; j++ ) printf("."); printf("\n");
+      for (int j = 0; j < H[i]; j++)
+         printf(".");
+      printf("\n");
    }
 
-   delete [] H;
+   delete[] H;
    return 0;
 }

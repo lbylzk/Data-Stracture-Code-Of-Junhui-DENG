@@ -8,12 +8,16 @@
 
 #pragma once
 
-static size_t hashCode ( char c ) { return ( size_t ) c; } //×Ö·û
-static size_t hashCode ( int k ) { return ( size_t ) k; } //ÕûÊıÒÔ¼°³¤³¤ÕûÊı
-static size_t hashCode ( long long i ) { return ( size_t ) ( ( i >> 32 ) + ( int ) i ); }
-static size_t hashCode ( char s[] ) { //Éú³É×Ö·û´®µÄÑ­»·ÒÆÎ»É¢ÁĞÂë£¨cyclic shift hash code£©
-   unsigned int h = 0; //É¢ÁĞÂë
-   for ( size_t n = strlen ( s ), i = 0; i < n; i++ ) //×Ô×óÏòÓÒ£¬Öğ¸ö´¦ÀíÃ¿Ò»×Ö·û
-      { h = ( h << 5 ) | ( h >> 27 ); h += (int) s[i]; } //É¢ÁĞÂëÑ­»·×óÒÆ5Î»£¬ÔÙÀÛ¼Óµ±Ç°×Ö·û
-   return ( size_t ) h; //Èç´ËËùµÃµÄÉ¢ÁĞÂë£¬Êµ¼ÊÉÏ¿ÉÀí½âÎª½üËÆµÄ¡°¶àÏîÊ½É¢ÁĞÂë¡±
-} //¶ÔÓÚÓ¢Óïµ¥´Ê£¬"Ñ­»·×óÒÆ5Î»"ÊÇÊµÑéÍ³¼ÆµÃ³öµÄ×î¼ÑÖµ
+static size_t hashCode(char c) { return (size_t)c; } //å­—ç¬¦
+static size_t hashCode(int k) { return (size_t)k; }  //æ•´æ•°ä»¥åŠé•¿é•¿æ•´æ•°
+static size_t hashCode(long long i) { return (size_t)((i >> 32) + (int)i); }
+static size_t hashCode(char s[])
+{                                                //ç”Ÿæˆå­—ç¬¦ä¸²çš„å¾ªç¯ç§»ä½æ•£åˆ—ç ï¼ˆcyclic shift hash codeï¼‰
+   unsigned int h = 0;                           //æ•£åˆ—ç 
+   for (size_t n = strlen(s), i = 0; i < n; i++) //è‡ªå·¦å‘å³ï¼Œé€ä¸ªå¤„ç†æ¯ä¸€å­—ç¬¦
+   {
+      h = (h << 5) | (h >> 27);
+      h += (int)s[i];
+   }                 //æ•£åˆ—ç å¾ªç¯å·¦ç§»5ä½ï¼Œå†ç´¯åŠ å½“å‰å­—ç¬¦
+   return (size_t)h; //å¦‚æ­¤æ‰€å¾—çš„æ•£åˆ—ç ï¼Œå®é™…ä¸Šå¯ç†è§£ä¸ºè¿‘ä¼¼çš„â€œå¤šé¡¹å¼æ•£åˆ—ç â€
+} //å¯¹äºè‹±è¯­å•è¯ï¼Œ"å¾ªç¯å·¦ç§»5ä½"æ˜¯å®éªŒç»Ÿè®¡å¾—å‡ºçš„æœ€ä½³å€¼

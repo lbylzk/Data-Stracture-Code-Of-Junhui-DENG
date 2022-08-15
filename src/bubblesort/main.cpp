@@ -6,53 +6,70 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "_share/util.h"
-/*DSA*/#include "random/shuffle.h"
-/*DSA*/#include "UniPrint/print_int_array.h"
+/*DSA*/ #include "_share/util.h"
+/*DSA*/ #include "random/shuffle.h"
+/*DSA*/ #include "UniPrint/print_int_array.h"
 
-/*DSA*/void bubblesort ( int A[], int n ); //algorithm#0
-/*DSA*/void bubblesort1A ( int A[], int n ); //algorithm#1A
-/*DSA*/void bubblesort1B ( int A[], int n ); //algorithm#1B
-/*DSA*/void bubblesort2 ( int A[], int n ); //algorithm#2
+/*DSA*/ void bubblesort(int A[], int n);            // algorithm#0
+/*DSA*/ void bubblesort1A(int A[], int n); // algorithm#1A
+/*DSA*/ void bubblesort1B(int A[], int n); // algorithm#1B
+/*DSA*/ void bubblesort2(int A[], int n);  // algorithm#2
 
 /******************************************************************************************
- * ¹¹ÔìËæ»úÊı×é£¨¿É¸ù¾İ²âÊÔĞèÒªÏàÓ¦µØ¸ÄĞ´£©
+ * æ„é€ éšæœºæ•°ç»„ï¼ˆå¯æ ¹æ®æµ‹è¯•éœ€è¦ç›¸åº”åœ°æ”¹å†™ï¼‰
  ******************************************************************************************/
-void randomArray ( int A[], int n, int seed ) {
-   srand ( seed );
-   for ( int i = 0; i < n; i++ ) A[i] = i;
-   shuffle ( A, 0, n / 3 );
-   shuffle ( A, 2 * n / 3, n );
+void randomArray(int A[], int n, int seed)
+{
+   srand(seed);
+   for (int i = 0; i < n; i++)
+      A[i] = i;
+   shuffle(A, 0, n / 3);
+   shuffle(A, 2 * n / 3, n);
 }
 
 /******************************************************************************************
- * ÆğÅİÅÅĞò²âÊÔ³ÌĞò
+ * èµ·æ³¡æ’åºæµ‹è¯•ç¨‹åº
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   int n = atoi ( argv[1] ); if ( n < 0 ) n = 0; //make sure length is non-negative
-   int* A = ( int* ) malloc ( n * sizeof ( int ) ); //allocate an array of size n
-   unsigned int seed = ( unsigned int ) time ( NULL ); //A same seed is used here for comparison between different algorithms
-   printf ( "\n== Bubblesort algorithm #0 ========\n" );
-   randomArray ( A, n, seed ); //create a randomized array using the same seed
-   printf ( "-->  " ); print ( A, n );
-   bubblesort ( A, n ); //sort the array using algorithm#0
-   printf ( "==>  " ); print ( A, n );
-   printf ( "\n== Bubblesort algorithm #1A ========\n" );
-   randomArray ( A, n, seed ); //create a randomized array using the same seed
-   printf ( "==>  " ); print ( A, n );
-   bubblesort1A ( A, n ); //sort the array using algorithm#1A
-   printf ( "==>  " ); print ( A, n );
-   printf ( "\n== Bubblesort algorithm #1B ========\n" );
-   randomArray ( A, n, seed ); //create a randomized array using the same seed
-   printf ( "==>  " ); print ( A, n );
-   bubblesort1B ( A, n ); //sort the array using algorithm#1B
-   printf ( "==>  " ); print ( A, n );
-   printf ( "\n== Bubblesort algorithm #2 ========\n" );
-   randomArray ( A, n, seed ); //create a randomized array using the same seed
-   printf ( "==>  " ); print ( A, n );
-   bubblesort2 ( A, n ); //sort the array using algorithm#2
-   printf ( "==>  " ); print ( A, n );
-   free ( A ); //release the array
+int main(int argc, char *argv[])
+{
+   if (2 > argc)
+   {
+      printf("Usage: %s <size of test>\a\a\n", argv[0]);
+      return 1;
+   }
+   int n = atoi(argv[1]);
+   if (n < 0)
+      n = 0;                                     // make sure length is non-negative
+   int *A = (int *)malloc(n * sizeof(int));      // allocate an array of size n
+   unsigned int seed = (unsigned int)time(NULL); // A same seed is used here for comparison between different algorithms
+   printf("\n== Bubblesort algorithm #0 ========\n");
+   randomArray(A, n, seed); // create a randomized array using the same seed
+   printf("-->  ");
+   print(A, n);
+   bubblesort(A, n); // sort the array using algorithm#0
+   printf("==>  ");
+   print(A, n);
+   printf("\n== Bubblesort algorithm #1A ========\n");
+   randomArray(A, n, seed); // create a randomized array using the same seed
+   printf("==>  ");
+   print(A, n);
+   bubblesort1A(A, n); // sort the array using algorithm#1A
+   printf("==>  ");
+   print(A, n);
+   printf("\n== Bubblesort algorithm #1B ========\n");
+   randomArray(A, n, seed); // create a randomized array using the same seed
+   printf("==>  ");
+   print(A, n);
+   bubblesort1B(A, n); // sort the array using algorithm#1B
+   printf("==>  ");
+   print(A, n);
+   printf("\n== Bubblesort algorithm #2 ========\n");
+   randomArray(A, n, seed); // create a randomized array using the same seed
+   printf("==>  ");
+   print(A, n);
+   bubblesort2(A, n); // sort the array using algorithm#2
+   printf("==>  ");
+   print(A, n);
+   free(A); // release the array
    return 0;
 }

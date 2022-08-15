@@ -8,10 +8,15 @@
 
 #pragma once
 
-//¶ÔÏòÁ¿Ç°n¸ö´ÊÌõÖĞµÄµÚi¸öÊµÊ©ÏÂÂË£¬i < n
-template <typename T> Rank percolateDown ( T* A, Rank n, Rank i ) {
-   Rank j; //i¼°Æä£¨ÖÁ¶àÁ½¸ö£©º¢×ÓÖĞ£¬¿°Îª¸¸Õß
-   while ( i != ( j = ProperParent ( A, n, i ) ) ) //Ö»Òªi·Çj£¬Ôò
-      { swap ( A[i], A[j] ); i = j; } //¶şÕß»»Î»£¬²¢¼ÌĞø¿¼²éÏÂ½µºóµÄi
-   return i; //·µ»ØÏÂÂËµÖ´ïµÄÎ»ÖÃ£¨ÒàiÒàj£©
+//å¯¹å‘é‡å‰nä¸ªè¯æ¡ä¸­çš„ç¬¬iä¸ªå®æ–½ä¸‹æ»¤ï¼Œi < n
+template <typename T>
+Rank percolateDown(T *A, Rank n, Rank i)
+{
+   Rank j;                                  // iåŠå…¶ï¼ˆè‡³å¤šä¸¤ä¸ªï¼‰å­©å­ä¸­ï¼Œå ªä¸ºçˆ¶è€…
+   while (i != (j = ProperParent(A, n, i))) //åªè¦iéjï¼Œåˆ™
+   {
+      swap(A[i], A[j]);
+      i = j;
+   }         //äºŒè€…æ¢ä½ï¼Œå¹¶ç»§ç»­è€ƒæŸ¥ä¸‹é™åçš„i
+   return i; //è¿”å›ä¸‹æ»¤æŠµè¾¾çš„ä½ç½®ï¼ˆäº¦iäº¦jï¼‰
 }

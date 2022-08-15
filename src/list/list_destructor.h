@@ -9,9 +9,9 @@
 #pragma once
 
 template <typename T>
-List<T>::~List() //ÁĞ±íÎö¹¹Æ÷
+List<T>::~List() //åˆ—è¡¨ææ„å™¨
 {
     clear();
     delete header;
     delete trailer;
-} //Çå¿ÕÁĞ±í£¬ÊÍ·ÅÍ·¡¢Î²ÉÚ±ø½Úµã
+} //æ¸…ç©ºåˆ—è¡¨ï¼Œé‡Šæ”¾å¤´ã€å°¾å“¨å…µèŠ‚ç‚¹

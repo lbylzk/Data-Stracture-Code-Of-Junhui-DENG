@@ -8,17 +8,22 @@
 
 #include "queen.h"
 
-void displaySolution ( int* solu, int n ) { //Êä³ön*nµÄ¿ÉÐÐ²¼¾Ö
-   ( Step == runMode ) ? system ( "cls" ) : printf ( "--\n" );
-   for ( int i = 0; i < n; i++ ) {
-      for ( int j = 0; j < n; j++ ) {
-         printf ( ( j == solu[i] ) ? "¨€" : "[]" );
+void displaySolution(int *solu, int n)
+{ //è¾“å‡ºn*nçš„å¯è¡Œå¸ƒå±€
+   (Step == runMode) ? system("cls") : printf("--\n");
+   for (int i = 0; i < n; i++)
+   {
+      for (int j = 0; j < n; j++)
+      {
+         printf((j == solu[i]) ? "â–ˆ" : "[]");
       }
-      printf ( "\n" );
+      printf("\n");
    }
-   if ( Step == runMode ) {
-      cout  << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
+   if (Step == runMode)
+   {
+      cout << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
       getchar();
-   } else
-      printf ( "\n" );
+   }
+   else
+      printf("\n");
 }

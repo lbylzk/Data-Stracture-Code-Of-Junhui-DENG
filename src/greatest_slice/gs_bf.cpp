@@ -1,11 +1,22 @@
 extern int s_lo, s_hi;
 
-int gs_BF( int A[], int n ) { //ÂùÁ¦²ßÂÔ£ºO(n^3)
-   int gs = A[0]; s_lo = n; s_hi = -1;
-   for ( int i = 0; i < n; i++ )
-      for ( int j = i; j < n; j++ ) { //Ã¶¾ÙËùÓĞµÄO(n^2)¸öÇø¶Î
-         int s = 0; for ( int k = i; k <= j; k++ ) s += A[k]; //ÓÃO(n)Ê±¼äÇóºÍ
-         if ( gs < s ) { gs = s; s_lo = i; s_hi = j + 1; } //ÔñÓÅ¡¢¸üĞÂ
+int gs_BF(int A[], int n)
+{ //è›®åŠ›ç­–ç•¥ï¼šO(n^3)
+   int gs = A[0];
+   s_lo = n;
+   s_hi = -1;
+   for (int i = 0; i < n; i++)
+      for (int j = i; j < n; j++)
+      { //æšä¸¾æ‰€æœ‰çš„O(n^2)ä¸ªåŒºæ®µ
+         int s = 0;
+         for (int k = i; k <= j; k++)
+            s += A[k]; //ç”¨O(n)æ—¶é—´æ±‚å’Œ
+         if (gs < s)
+         {
+            gs = s;
+            s_lo = i;
+            s_hi = j + 1;
+         } //æ‹©ä¼˜ã€æ›´æ–°
       }
    return gs;
 }

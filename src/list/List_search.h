@@ -8,7 +8,7 @@
 
 #pragma once
 
-template <typename T> //ÔÚÓĞĞòÁĞ±íÄÚ½Úµãp£¨¿ÉÄÜÊÇtrailer£©µÄn¸ö£¨Õæ£©Ç°ÇıÖĞ£¬ÕÒµ½²»´óÓÚeµÄ×îºóÕß
+template <typename T> //åœ¨æœ‰åºåˆ—è¡¨å†…èŠ‚ç‚¹pï¼ˆå¯èƒ½æ˜¯trailerï¼‰çš„nä¸ªï¼ˆçœŸï¼‰å‰é©±ä¸­ï¼Œæ‰¾åˆ°ä¸å¤§äºeçš„æœ€åè€…
 ListNodePosi<T> List<T>::search(T const &e, int n, ListNodePosi<T> p) const
 {
    // assert: 0 <= n <= rank(p) < _size
@@ -18,9 +18,9 @@ ListNodePosi<T> List<T>::search(T const &e, int n, ListNodePosi<T> p) const
    do
    {
       p = p->pred;
-      n--; //´ÓÓÒÏò×ó
+      n--; //ä»å³å‘å·¦
       /*DSA*/ printf(" -->%4d", p->data);
-   } while ((-1 < n) && (e < p->data)); //Öğ¸ö±È½Ï£¬Ö±ÖÁÃüÖĞ»òÔ½½ç
+   } while ((-1 < n) && (e < p->data)); //é€ä¸ªæ¯”è¾ƒï¼Œç›´è‡³å‘½ä¸­æˆ–è¶Šç•Œ
    /*DSA*/ printf("\n");
-   return p; //·µ»Ø²éÕÒÖÕÖ¹µÄÎ»ÖÃ
-} //Ê§°ÜÊ±£¬·µ»ØÇø¼ä×ó±ß½çµÄÇ°Çı£¨¿ÉÄÜÊÇheader£©¡ª¡ªµ÷ÓÃÕß¿ÉÍ¨¹ıvalid()ÅĞ¶Ï³É¹¦Óë·ñ
+   return p; //è¿”å›æŸ¥æ‰¾ç»ˆæ­¢çš„ä½ç½®
+} //å¤±è´¥æ—¶ï¼Œè¿”å›åŒºé—´å·¦è¾¹ç•Œçš„å‰é©±ï¼ˆå¯èƒ½æ˜¯headerï¼‰â€”â€”è°ƒç”¨è€…å¯é€šè¿‡valid()åˆ¤æ–­æˆåŠŸä¸å¦

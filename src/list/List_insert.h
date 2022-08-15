@@ -13,25 +13,25 @@ ListNodePosi<T> List<T>::insertAsFirst(T const &e)
 {
     _size++;
     return header->insertAsSucc(e);
-} // eµ±×÷Ê×½Úµã²åÈë
+} // eå½“ä½œé¦–èŠ‚ç‚¹æ’å…¥
 
 template <typename T>
 ListNodePosi<T> List<T>::insertAsLast(T const &e)
 {
     _size++;
     return trailer->insertAsPred(e);
-} // eµ±×÷Ä©½Úµã²åÈë
+} // eå½“ä½œæœ«èŠ‚ç‚¹æ’å…¥
 
 template <typename T>
 ListNodePosi<T> List<T>::insert(ListNodePosi<T> p, T const &e)
 {
     _size++;
     return p->insertAsSucc(e);
-} // eµ±×÷pµÄºó¼Ì²åÈë
+} // eå½“ä½œpçš„åç»§æ’å…¥
 
 template <typename T>
 ListNodePosi<T> List<T>::insert(T const &e, ListNodePosi<T> p)
 {
     _size++;
     return p->insertAsPred(e);
-} // eµ±×÷pµÄÇ°Çı²åÈë
+} // eå½“ä½œpçš„å‰é©±æ’å…¥

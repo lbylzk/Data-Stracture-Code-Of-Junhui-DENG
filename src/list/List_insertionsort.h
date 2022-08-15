@@ -8,14 +8,14 @@
 
 #pragma once
 
-template <typename T> //对列表中起始于位置p、宽度为n的区间做插入排序
+template <typename T> //瀵瑰垪琛ㄤ腑璧峰浜庝綅缃畃銆佸搴︿负n鐨勫尯闂村仛鎻掑叆鎺掑簭
 void List<T>::insertionSort(ListNodePosi<T> p, int n)
 {          // valid(p) && rank(p) + n <= size
    /*DSA*/ // printf ( "InsertionSort ...\n" );
    for (int r = 0; r < n; r++)
-   {                                          //逐一为各节点
-      insert(search(p->data, r, p), p->data); //查找适当的位置并插入
+   {                                          //閫愪竴涓哄悇鑺傜偣
+      insert(search(p->data, r, p), p->data); //鏌ユ壘閫傚綋鐨勪綅缃苟鎻掑叆
       p = p->succ;
-      remove(p->pred); //转向下一节点
+      remove(p->pred); //杞悜涓嬩竴鑺傜偣
    }
 }

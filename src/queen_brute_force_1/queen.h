@@ -8,7 +8,7 @@
 
 #pragma once
 
-#include<iostream>
+#include <iostream>
 using namespace std;
 
 #include <cstdio>
@@ -18,17 +18,21 @@ using namespace std;
 
 #define QUEEN_MAX 20
 
-typedef enum {Continuous, Step} RunMode;
+typedef enum
+{
+    Continuous,
+    Step
+} RunMode;
 
-extern RunMode runMode; //ÔËĞĞÄ£Ê½
-extern int nSolu; //½âµÄ×ÜÊı
-extern int nCheck; //³¢ÊÔµÄ×Ü´ÎÊı
+extern RunMode runMode; //è¿è¡Œæ¨¡å¼
+extern int nSolu;       //è§£çš„æ€»æ•°
+extern int nCheck;      //å°è¯•çš„æ€»æ¬¡æ•°
 
 void place5Queens_BruteForce();
-void displaySolution ( int* solu, int n );
-bool collide ( int* solu, int k );
+void displaySolution(int *solu, int n);
+bool collide(int *solu, int k);
 
-void placeQueens ( int n, int k );
+void placeQueens(int n, int k);
 
 void place2Queens();
 void place3Queens();

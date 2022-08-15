@@ -6,14 +6,22 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "Huffman_PQ.h"
+#include "Huffman_PQ.h"
 
-// ¸ù¾İ±àÂëÊ÷¶Ô³¤ÎªnµÄBitmap´®×öHuffman½âÂë
-void decode ( HuffTree* tree, Bitmap* code, int n ) {
+// æ ¹æ®ç¼–ç æ ‘å¯¹é•¿ä¸ºnçš„Bitmapä¸²åšHuffmanè§£ç 
+void decode(HuffTree *tree, Bitmap *code, int n)
+{
    BinNodePosi<HuffChar> x = tree->root();
-   for ( int i = 0; i < n; i++ ) {
-      x = code->test ( i ) ? x->rc : x->lc;
-      if ( IsLeaf ( *x ) ) {  printf ( "%c", x->data.ch ); x = tree->root();  }
+   for (int i = 0; i < n; i++)
+   {
+      x = code->test(i) ? x->rc : x->lc;
+      if (IsLeaf(*x))
+      {
+         printf("%c", x->data.ch);
+         x = tree->root();
+      }
    }
-   /*DSA*/if ( x != tree->root() ) printf ( "..." ); printf ( "\n" );
-} //½â³öµÄÃ÷Âë£¬ÔÚ´ËÖ±½Ó´òÓ¡Êä³ö£»ÊµÓÃÖĞ¿É¸ÄÎª¸ù¾İĞèÒª·µ»ØÉÏ²ãµ÷ÓÃÕß
+   /*DSA*/ if (x != tree->root())
+      printf("...");
+   printf("\n");
+} //è§£å‡ºçš„æ˜ç ï¼Œåœ¨æ­¤ç›´æ¥æ‰“å°è¾“å‡ºï¼›å®ç”¨ä¸­å¯æ”¹ä¸ºæ ¹æ®éœ€è¦è¿”å›ä¸Šå±‚è°ƒç”¨è€…

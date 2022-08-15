@@ -1,12 +1,22 @@
 extern int s_lo, s_hi;
 
-int gs_IC( int A[], int n ) { //µİÔö²ßÂÔ£ºO(n^2)
-   int gs = A[0]; s_lo = n; s_hi = -1;
-   for ( int i = 0; i < n; i++ ) { //Ã¶¾ÙËùÓĞÆğÊ¼ÓÚi
+int gs_IC(int A[], int n)
+{ //é€’å¢ç­–ç•¥ï¼šO(n^2)
+   int gs = A[0];
+   s_lo = n;
+   s_hi = -1;
+   for (int i = 0; i < n; i++)
+   { //æšä¸¾æ‰€æœ‰èµ·å§‹äºi
       int s = 0;
-      for ( int j = i; j < n; j++ ) { //ÖÕÖ¹ÓÚjµÄÇø¼ä
-         s += A[j]; //µİÔöµØµÃµ½Æä×ÜºÍ£ºO(1)
-         if ( gs < s ) { gs = s; s_lo = i; s_hi = j + 1; } //ÔñÓÅ¡¢¸üĞÂ
+      for (int j = i; j < n; j++)
+      {             //ç»ˆæ­¢äºjçš„åŒºé—´
+         s += A[j]; //é€’å¢åœ°å¾—åˆ°å…¶æ€»å’Œï¼šO(1)
+         if (gs < s)
+         {
+            gs = s;
+            s_lo = i;
+            s_hi = j + 1;
+         } //æ‹©ä¼˜ã€æ›´æ–°
       }
    }
    return gs;

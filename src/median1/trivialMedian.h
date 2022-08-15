@@ -8,15 +8,19 @@
 
 #pragma once
 
-// ÖĞÎ»ÊıËã·¨ÂùÁ¦°æ£ºĞ§ÂÊµÍ£¬½öÊÊÓÃÓÚmax(n1, n2)½ÏĞ¡µÄÇé¿ö
-template <typename T> //×ÓÏòÁ¿S1[lo1, lo1 + n1)ºÍS2[lo2, lo2 + n2)·Ö±ğÓĞĞò£¬Êı¾İÏî¿ÉÄÜÖØ¸´
-T trivialMedian ( Vector<T>& S1, int lo1, int n1, Vector<T>& S2, int lo2, int n2 ) {
-   /*DSA*/printf ( "trivial median\n" );
+// ä¸­ä½æ•°ç®—æ³•è›®åŠ›ç‰ˆï¼šæ•ˆç‡ä½ï¼Œä»…é€‚ç”¨äºmax(n1, n2)è¾ƒå°çš„æƒ…å†µ
+template <typename T> //å­å‘é‡S1[lo1, lo1 + n1)å’ŒS2[lo2, lo2 + n2)åˆ†åˆ«æœ‰åºï¼Œæ•°æ®é¡¹å¯èƒ½é‡å¤
+T trivialMedian(Vector<T> &S1, int lo1, int n1, Vector<T> &S2, int lo2, int n2)
+{
+   /*DSA*/ printf("trivial median\n");
    int hi1 = lo1 + n1, hi2 = lo2 + n2;
-   Vector<T> S; //½«Á½¸öÓĞĞò×ÓÏòÁ¿¹é²¢ÎªÒ»¸öÓĞĞòÏòÁ¿
-   while ( ( lo1 < hi1 ) && ( lo2 < hi2 ) )
-      S.insert ( S1[lo1] <= S2[lo2] ? S1[lo1++] : S2[lo2++] );
-   while ( lo1 < hi1 ) S.insert ( S1[lo1++] );
-   while ( lo2 < hi2 ) S.insert ( S2[lo2++] ); /*DSA*/print ( S );
-   return S[ ( n1 + n2 ) / 2]; //Ö±½Ó·µ»Ø¹é²¢ÏòÁ¿µÄÖĞÎ»Êı
+   Vector<T> S; //å°†ä¸¤ä¸ªæœ‰åºå­å‘é‡å½’å¹¶ä¸ºä¸€ä¸ªæœ‰åºå‘é‡
+   while ((lo1 < hi1) && (lo2 < hi2))
+      S.insert(S1[lo1] <= S2[lo2] ? S1[lo1++] : S2[lo2++]);
+   while (lo1 < hi1)
+      S.insert(S1[lo1++]);
+   while (lo2 < hi2)
+      S.insert(S2[lo2++]); /*DSA*/
+   print(S);
+   return S[(n1 + n2) / 2]; //ç›´æ¥è¿”å›å½’å¹¶å‘é‡çš„ä¸­ä½æ•°
 }

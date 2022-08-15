@@ -8,5 +8,5 @@
 
 #pragma once
 
-#include "Hashtable/Hashtable.h" //ÓÃHashTableÊµÏÖ
-using HuffTable = Hashtable<char, char*>; //Huffman±àÂë±í
+#include "Hashtable/Hashtable.h"           //ç”¨HashTableå®ç°
+using HuffTable = Hashtable<char, char *>; // Huffmanç¼–ç è¡¨

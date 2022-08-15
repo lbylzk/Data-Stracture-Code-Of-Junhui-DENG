@@ -1,16 +1,26 @@
-#include "stack/stack.h" //½èÖúÕ»½á¹¹£¬¼ÆËãÖ±·½Í¼H[]ÖĞµÄ×î´ó¾ØĞÎ£¨²¢ÁĞÊ±È¡×î¿¿×óÕß£©
+#include "stack/stack.h" //å€ŸåŠ©æ ˆç»“æ„ï¼Œè®¡ç®—ç›´æ–¹å›¾H[]ä¸­çš„æœ€å¤§çŸ©å½¢ï¼ˆå¹¶åˆ—æ—¶å–æœ€é å·¦è€…ï¼‰
 
-__int64 mr_STACK( int H[], int n, int& mr_r, int& mr_s, int& mr_t ) { //H[]½Ô·Ç¸º
-   Stack<int> SR; //´ÎÕ»¶¥¡¢Õ»¶¥×ÜÊÇs[r]-1Óër£¬µ±Ç°µÄt = t[r]
+__int64 mr_STACK(int H[], int n, int &mr_r, int &mr_s, int &mr_t)
+{                 // H[]çš†éè´Ÿ
+   Stack<int> SR; //æ¬¡æ ˆé¡¶ã€æ ˆé¡¶æ€»æ˜¯s[r]-1ä¸rï¼Œå½“å‰çš„t = t[r]
    __int64 maxRect = 0;
-   for ( int t = 0; t <= n; t++ ) { //Öğ¸ö³¢ÊÔÒÔtÎªÓÒ±ß½çµÄ
-      while ( !SR.empty() && ( t == n || H[SR.top()] > H[t] ) ) { //Ã¿Ò»¸ö¼«´ó¾ØĞÎ
-         int r = SR.pop(); int s = SR.empty() ? 0 : SR.top() + 1;
-         __int64 mR = H[r] * ( t - s );
-         if ( maxRect < mR )
-            { maxRect = mR; mr_r = r; mr_s = s; mr_t = t; }
+   for (int t = 0; t <= n; t++)
+   { //é€ä¸ªå°è¯•ä»¥tä¸ºå³è¾¹ç•Œçš„
+      while (!SR.empty() && (t == n || H[SR.top()] > H[t]))
+      { //æ¯ä¸€ä¸ªæå¤§çŸ©å½¢
+         int r = SR.pop();
+         int s = SR.empty() ? 0 : SR.top() + 1;
+         __int64 mR = H[r] * (t - s);
+         if (maxRect < mR)
+         {
+            maxRect = mR;
+            mr_r = r;
+            mr_s = s;
+            mr_t = t;
+         }
       }
-      if ( t < n ) SR.push( t ); //Õ»ÖĞÖ»¼ÇÂ¼ËùÓĞµÄH[s] = min{ H[k] | s <= k <= t } 
-   } //assert: SR is empty at exit
+      if (t < n)
+         SR.push(t); //æ ˆä¸­åªè®°å½•æ‰€æœ‰çš„H[s] = min{ H[k] | s <= k <= t }
+   }                 // assert: SR is empty at exit
    return maxRect;
-} //Ã¿Ïî½øÕ»¡¢³öÕ»²»¹ı³£Êı´Î£¬ÀÛ¼Æ³É±¾O(n)
+} //æ¯é¡¹è¿›æ ˆã€å‡ºæ ˆä¸è¿‡å¸¸æ•°æ¬¡ï¼Œç´¯è®¡æˆæœ¬O(n)

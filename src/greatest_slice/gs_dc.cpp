@@ -1,19 +1,24 @@
-/*DSA*/#include <cstdlib>
-/*DSA*/#include "_share/util.h"
+/*DSA*/ #include <cstdlib>
+    /*DSA*/ #include "_share/util.h"
 
-extern int s_lo, s_hi;
+    extern int s_lo,
+    s_hi;
 
-int gs_DC( int A[], int lo, int hi ) { //∑÷÷Œ≤ﬂ¬‘£∫O(n*logn)
-   if ( hi - lo < 2 ) return A[lo];
+int gs_DC(int A[], int lo, int hi)
+{ //ÂàÜÊ≤ªÁ≠ñÁï•ÔºöO(n*logn)
+   if (hi - lo < 2)
+      return A[lo];
    int mi = (lo + hi) / 2;
 
-   int gsL = A[mi-1], sL = 0, i = mi; //√∂æŸ
-   while ( lo < i-- ) //À˘”–[i, mi)¿‡«¯∂Œ
-      if ( gsL < (sL += A[i]) ) gsL = sL;
+   int gsL = A[mi - 1], sL = 0, i = mi; //Êûö‰∏æ
+   while (lo < i--)                     //ÊâÄÊúâ[i, mi)Á±ªÂå∫ÊÆµ
+      if (gsL < (sL += A[i]))
+         gsL = sL;
 
-   int gsR = A[mi], sR = 0, j = mi-1; //√∂æŸ
-   while ( ++j < hi ) //À˘”–[mi, j)¿‡«¯∂Œ
-      if ( gsR < (sR += A[j]) ) gsR = sR; //‘Ò”≈°¢∏¸–¬
+   int gsR = A[mi], sR = 0, j = mi - 1; //Êûö‰∏æ
+   while (++j < hi)                     //ÊâÄÊúâ[mi, j)Á±ªÂå∫ÊÆµ
+      if (gsR < (sR += A[j]))
+         gsR = sR; //Êã©‰ºò„ÄÅÊõ¥Êñ∞
 
-   return max( gsL + gsR, max( gs_DC( A, lo, mi ), gs_DC( A, mi, hi ) ) ); //µ›πÈ
+   return max(gsL + gsR, max(gs_DC(A, lo, mi), gs_DC(A, mi, hi))); //ÈÄíÂΩí
 }

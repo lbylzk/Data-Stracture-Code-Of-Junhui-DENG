@@ -8,17 +8,17 @@
 
 #pragma once
 
-template <typename T> //�б��Ĺ鲢�����㷨������ʼ��λ��p��n��Ԫ������
+template <typename T> //列表的归并排序算法：对起始于位置p的n个元素排序
 void List<T>::mergeSort(ListNodePosi<T> &p, int n)
 {          // valid(p) && rank(p) + n <= size
    /*DSA*/ // printf ( "\tMERGEsort [%3d]\n", n );
    if (n < 2)
-      return;      //��������Χ���㹻С����ֱ�ӷ��أ�����...
-   int m = n >> 1; //���е�Ϊ��
+      return;      //若待排序范围已足够小，则直接返回；否则...
+   int m = n >> 1; //以中点为界
    ListNodePosi<T> q = p;
    for (int i = 0; i < m; i++)
-      q = q->succ; //�ҵ������б����
+      q = q->succ; //找到后子列表起点
    mergeSort(p, m);
-   mergeSort(q, n - m);              //ǰ�������б����ֱ�����
-   p = merge(p, m, *this, q, n - m); //�鲢
-} //ע�⣺�����p��Ȼָ��鲢������ģ��£����
+   mergeSort(q, n - m);              //前、后子列表各分别排序
+   p = merge(p, m, *this, q, n - m); //归并
+} //注意：排序后，p依然指向归并后区间的（新）起点

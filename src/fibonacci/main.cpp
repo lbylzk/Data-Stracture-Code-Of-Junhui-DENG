@@ -6,38 +6,44 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-#include<ctime>
-#include<iostream>
+#include <ctime>
+#include <iostream>
 using namespace std;
 
 using Rank = int;
 #include "Fib.h"
 
-__int64  fibI ( int n ); //µ¸¥˙∞Ê
-__int64  fib ( int n ); //∂˛∑÷µ›πÈ∞Ê
-__int64  fib ( int n, __int64& f ); //œﬂ–‘µ›πÈ∞Ê
+__int64 fibI(int n);            //Ëø≠‰ª£Áâà
+__int64 fib(int n);             //‰∫åÂàÜÈÄíÂΩíÁâà
+__int64 fib(int n, __int64 &f); //Á∫øÊÄßÈÄíÂΩíÁâà
 
-int main ( int argc, char* argv[] ) { //≤‚ ‘FIB
-// ºÏ≤È≤Œ ˝
-   if ( 2 > argc ) { fprintf ( stderr, "Usage: %s <rank>\n", argv[0] ); return 1; }
-   int n = atoi ( argv[1] );
-// “¿¥Œº∆À„Fibonacci ˝¡–∏˜œÓ
-   printf ( "\n------------- class Fib -------------\n" );
-   Fib f ( 0 );
-   for ( int i = 0; i < n; i++, f.next() )
-      printf ( "fib(%2d) = %d\n", i, f.get() );
-   for ( int i = 0; i <= n; i++, f.prev() )
-      printf ( "fib(%2d) = %d\n", n - i, f.get() );
-   printf ( "\n------------- Iteration -------------\n" );
-   for ( int i = 0; i < n; i++ )
-      printf ( "fib(%2d) = %22I64d\n", i, fibI ( i ) );
-   printf ( "\n------------- Linear Recursion -------------\n" );
-   for ( int i = 0; i < n; i++ ) {
-      __int64 f;
-      printf ( "fib(%2d) = %22I64d\n", i, fib ( i, f ) );
+int main(int argc, char *argv[])
+{ //ÊµãËØïFIB
+   // Ê£ÄÊü•ÂèÇÊï∞
+   if (2 > argc)
+   {
+      fprintf(stderr, "Usage: %s <rank>\n", argv[0]);
+      return 1;
    }
-   printf ( "\n------------- Binary Recursion -------------\n" );
-   for ( int i = 0; i < n; i++ )
-      printf ( "fib(%2d) = %22I64d\n", i, fib ( i ) );
+   int n = atoi(argv[1]);
+   // ‰æùÊ¨°ËÆ°ÁÆóFibonacciÊï∞ÂàóÂêÑÈ°π
+   printf("\n------------- class Fib -------------\n");
+   Fib f(0);
+   for (int i = 0; i < n; i++, f.next())
+      printf("fib(%2d) = %d\n", i, f.get());
+   for (int i = 0; i <= n; i++, f.prev())
+      printf("fib(%2d) = %d\n", n - i, f.get());
+   printf("\n------------- Iteration -------------\n");
+   for (int i = 0; i < n; i++)
+      printf("fib(%2d) = %22I64d\n", i, fibI(i));
+   printf("\n------------- Linear Recursion -------------\n");
+   for (int i = 0; i < n; i++)
+   {
+      __int64 f;
+      printf("fib(%2d) = %22I64d\n", i, fib(i, f));
+   }
+   printf("\n------------- Binary Recursion -------------\n");
+   for (int i = 0; i < n; i++)
+      printf("fib(%2d) = %22I64d\n", i, fib(i));
    return 0;
 }

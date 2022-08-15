@@ -12,38 +12,50 @@
 #include "cursor_list.h"
 
 /******************************************************************************************
- * ²âÊÔÓÎ±êÊ½ÁĞ±í
+ * æµ‹è¯•æ¸¸æ ‡å¼åˆ—è¡¨
  ******************************************************************************************/
-void testCursor ( int testSize ) {
-   CursorList<char> CL ( testSize ); CL.print();
-   //CL.insert('A'); CL.insert('B'); CL.insert('C'); CL.insert('D'); CL.insert('E'); CL.print();
-   //CL.remove(CL.find('A')); CL.remove(CL.find('B')); CL.remove(CL.find('C')); CL.remove(CL.find('D')); CL.remove(CL.find('E')); CL.print();
-   //CL.insert('A'); CL.insert('B'); CL.insert('C'); CL.insert('D'); CL.insert('E'); CL.print();
-   for ( int i = 0; i < testSize ; i++ ) {
-      char x = 'A' + ( rand() % 26 );
-      if ( 30 < ( rand() % 100 ) ) {
-         printf ( "%c inserted at %d\n", x, CL.insert ( x ) );
-      } else {
-         if ( 0 > CL.find ( x ) )
-            printf ( "%c not found\n", x );
+void testCursor(int testSize)
+{
+   CursorList<char> CL(testSize);
+   CL.print();
+   // CL.insert('A'); CL.insert('B'); CL.insert('C'); CL.insert('D'); CL.insert('E'); CL.print();
+   // CL.remove(CL.find('A')); CL.remove(CL.find('B')); CL.remove(CL.find('C')); CL.remove(CL.find('D')); CL.remove(CL.find('E')); CL.print();
+   // CL.insert('A'); CL.insert('B'); CL.insert('C'); CL.insert('D'); CL.insert('E'); CL.print();
+   for (int i = 0; i < testSize; i++)
+   {
+      char x = 'A' + (rand() % 26);
+      if (30 < (rand() % 100))
+      {
+         printf("%c inserted at %d\n", x, CL.insert(x));
+      }
+      else
+      {
+         if (0 > CL.find(x))
+            printf("%c not found\n", x);
          else
-            printf ( "%c removed at %d\n", x, CL.remove ( CL.find ( x ) ) );
+            printf("%c removed at %d\n", x, CL.remove(CL.find(x)));
       }
       CL.print();
    }
-   for ( char x = 'A'; x <= 'Z'; x++ ) {
-      while ( 0 <= CL.find ( x ) )
-         printf ( "%c removed at %d\n", x, CL.remove ( CL.find ( x ) ) );
+   for (char x = 'A'; x <= 'Z'; x++)
+   {
+      while (0 <= CL.find(x))
+         printf("%c removed at %d\n", x, CL.remove(CL.find(x)));
       CL.print();
    }
 }
 
 /******************************************************************************************
- * ²âÊÔÏòÁ¿
+ * æµ‹è¯•å‘é‡
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand ( ( unsigned int ) time ( NULL ) ); //ÉèÖÃËæ»úÖÖ×Ó
-   testCursor ( atoi ( argv[1] ) ); //ÔªËØÀàĞÍ¿ÉÒÔÔÚÕâÀïÈÎÒâÑ¡Ôñ
+int main(int argc, char *argv[])
+{
+   if (2 > argc)
+   {
+      printf("Usage: %s <size of test>\a\a\n", argv[0]);
+      return 1;
+   }
+   srand((unsigned int)time(NULL)); //è®¾ç½®éšæœºç§å­
+   testCursor(atoi(argv[1]));       //å…ƒç´ ç±»å‹å¯ä»¥åœ¨è¿™é‡Œä»»æ„é€‰æ‹©
    return 0;
 }

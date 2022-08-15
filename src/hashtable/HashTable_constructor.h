@@ -7,13 +7,16 @@
  ******************************************************************************************/
 
 #pragma once
+#include "prime/primeNLT.h"
 
-/*DSA*/#include "prime/primeNLT.h"
-
-template <typename K, typename V> Hashtable<K, V>::Hashtable ( int c ) { //´´½¨É¢ÁĞ±í£¬ÈİÁ¿Îª
-   M = primeNLT ( c, 1048576, "../../_input/prime-1048576-bitmap.txt" ); //²»Ğ¡ÓÚcµÄËØÊıM
-   N = 0; ht = new Entry<K, V>*[M]; //¿ª±ÙÍ°Êı×é£¨¼Ù¶¨³É¹¦£©
-   memset ( ht, 0, sizeof ( Entry<K, V>* ) * M ); //³õÊ¼»¯¸÷Í°
-   removed = new Bitmap ( M ); L = 0; //ÓÃBitmap¼ÇÂ¼ÀÁ¶èÉ¾³ı
+template <typename K, typename V>
+Hashtable<K, V>::Hashtable(int c)
+{                                                                     //åˆ›å»ºæ•£åˆ—è¡¨ï¼Œå®¹é‡ä¸º
+   M = primeNLT(c, 1048576, "../../_input/prime-1048576-bitmap.txt"); //ä¸å°äºcçš„ç´ æ•°M
+   N = 0;
+   ht = new Entry<K, V> *[M];                //å¼€è¾Ÿæ¡¶æ•°ç»„ï¼ˆå‡å®šæˆåŠŸï¼‰
+   memset(ht, 0, sizeof(Entry<K, V> *) * M); //åˆå§‹åŒ–å„æ¡¶
+   removed = new Bitmap(M);
+   L = 0; //ç”¨Bitmapè®°å½•æ‡’æƒ°åˆ é™¤
    //*DSA*/printf("A bucket array has been created with capacity = %d\n\n", M);
 }

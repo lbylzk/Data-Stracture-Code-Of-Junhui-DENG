@@ -6,19 +6,33 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "Huffman_PQ.h"
+/*DSA*/ #include "Huffman_PQ.h"
 
-static void //Í¨¹ı±éÀú»ñÈ¡¸÷×Ö·ûµÄ±àÂë
-generateCT ( Bitmap* code, int length, HuffTable* table, BinNodePosi<HuffChar> v ) {
-   if ( IsLeaf ( *v ) ) //ÈôÊÇÒ¶½Úµã£¨»¹ÓĞ¶àÖÖ·½·¨¿ÉÒÔÅĞ¶Ï£©
-      {  table->put ( v->data.ch, code->bits2string ( length ) ); return;  }
-   if ( HasLChild ( *v ) ) //Left = 0
-      { code->clear ( length ); generateCT ( code, length + 1, table, v->lc ); }
-   if ( HasRChild ( *v ) ) //Right = 1
-      { code->set ( length ); generateCT ( code, length + 1, table, v->rc ); }
+    static void //é€šè¿‡éå†è·å–å„å­—ç¬¦çš„ç¼–ç 
+    generateCT(Bitmap *code, int length, HuffTable *table, BinNodePosi <HuffChar> v)
+{
+   if (IsLeaf(*v)) //è‹¥æ˜¯å¶èŠ‚ç‚¹ï¼ˆè¿˜æœ‰å¤šç§æ–¹æ³•å¯ä»¥åˆ¤æ–­ï¼‰
+   {
+      table->put(v->data.ch, code->bits2string(length));
+      return;
+   }
+   if (HasLChild(*v)) // Left = 0
+   {
+      code->clear(length);
+      generateCT(code, length + 1, table, v->lc);
+   }
+   if (HasRChild(*v)) // Right = 1
+   {
+      code->set(length);
+      generateCT(code, length + 1, table, v->rc);
+   }
 }
 
-HuffTable* generateTable ( HuffTree* tree ) { //½«¸÷×Ö·û±àÂëÍ³Ò»´æÈëÒÔÉ¢ÁĞ±íÊµÏÖµÄ±àÂë±íÖĞ
-   HuffTable* table = new HuffTable; Bitmap* code = new Bitmap;
-   generateCT ( code, 0, table, tree->root() ); release ( code ); return table;
-}; //release()¸ºÔğÊÍ·Å¸´ÔÓ½á¹¹£¬ÓëËã·¨ÎŞÖ±½Ó¹ØÏµ£¬¾ßÌåÊµÏÖÏê¼û´úÂë°ü
+HuffTable *generateTable(HuffTree *tree)
+{ //å°†å„å­—ç¬¦ç¼–ç ç»Ÿä¸€å­˜å…¥ä»¥æ•£åˆ—è¡¨å®ç°çš„ç¼–ç è¡¨ä¸­
+   HuffTable *table = new HuffTable;
+   Bitmap *code = new Bitmap;
+   generateCT(code, 0, table, tree->root());
+   release(code);
+   return table;
+}; // release()è´Ÿè´£é‡Šæ”¾å¤æ‚ç»“æ„ï¼Œä¸ç®—æ³•æ— ç›´æ¥å…³ç³»ï¼Œå…·ä½“å®ç°è¯¦è§ä»£ç åŒ…

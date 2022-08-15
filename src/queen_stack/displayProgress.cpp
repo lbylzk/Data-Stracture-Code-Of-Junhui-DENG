@@ -8,21 +8,26 @@
 
 #include "queen_stack.h"
 
-int N = 0; //ÆåÅÌ´óĞ¡
+int N = 0; //æ£‹ç›˜å¤§å°
 
-void displayRow ( Queen& q ) { //´òÓ¡µ±Ç°»Êºó£¨·ÅÖÃÓÚcolÁĞ£©ËùÔÚĞĞ
-   printf ( "%2d: ", q.x );
+void displayRow(Queen &q)
+{ //æ‰“å°å½“å‰çš‡åï¼ˆæ”¾ç½®äºcolåˆ—ï¼‰æ‰€åœ¨è¡Œ
+   printf("%2d: ", q.x);
    int i = 0;
-   while ( i++ < q.y ) printf ( "[]" );
-   printf ( "¨€" );
-   while ( i++ < N ) printf ( "[]" );
-   printf ( "%2d\n", q.y );
+   while (i++ < q.y)
+      printf("[]");
+   printf("â–ˆ");
+   while (i++ < N)
+      printf("[]");
+   printf("%2d\n", q.y);
 }
 
-void displayProgress ( Stack<Queen>& S, int nQueen ) { //ÔÚÆåÅÌÉÏÏÔÊ¾ËÑ²éµÄ½øÕ¹
-   system ( "cls" );
-   N = nQueen; S.traverse ( displayRow );
-   if ( nQueen <= S.size() )
-      cout  << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
+void displayProgress(Stack<Queen> &S, int nQueen)
+{ //åœ¨æ£‹ç›˜ä¸Šæ˜¾ç¤ºæœæŸ¥çš„è¿›å±•
+   system("cls");
+   N = nQueen;
+   S.traverse(displayRow);
+   if (nQueen <= S.size())
+      cout << nSolu << " solution(s) found after " << nCheck << " check(s)\a";
    getchar();
 }

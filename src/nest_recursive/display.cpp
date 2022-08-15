@@ -9,23 +9,29 @@
 #include "nest_stack/nest.h"
 
 /******************************************************************************************
- * ÏÔÊ¾±í´ïÊ½Æ¬¶Îexp[lo, hi]£¬ÓëÔ­±í´ïÊ½¶ÔÆë
+ * æ˜¾ç¤ºè¡¨è¾¾å¼ç‰‡æ®µexp[lo, hi]ï¼Œä¸åŸè¡¨è¾¾å¼å¯¹é½
  ******************************************************************************************/
-void displaySubstring ( const char exp[], int lo, int hi ) {
-   for ( int i = 0; i < lo; i++ ) printf ( " " );
-   for ( int i = lo; i <= hi; i++ ) printf ( "%c", exp[i] );
-   printf ( "\n" );
+void displaySubstring(const char exp[], int lo, int hi)
+{
+   for (int i = 0; i < lo; i++)
+      printf(" ");
+   for (int i = lo; i <= hi; i++)
+      printf("%c", exp[i]);
+   printf("\n");
 }
 
 /******************************************************************************************
- * ÏÔÊ¾±í´ïÊ½É¨Ãè½ø¶È
+ * æ˜¾ç¤ºè¡¨è¾¾å¼æ‰«æè¿›åº¦
  ******************************************************************************************/
-void displayProgress ( const char exp[], int i, Stack<char> S ) {
-// ±í´ïÊ½
-   system ( "cls" );
-   printf ( "\n%s\n", exp );
-   for ( int j = 0; j < i; j++ )   printf ( "-" );
-   printf ( "^\n\n\n" );
-// Õ»
-   print ( S ); getchar();
+void displayProgress(const char exp[], int i, Stack<char> S)
+{
+   // è¡¨è¾¾å¼
+   system("cls");
+   printf("\n%s\n", exp);
+   for (int j = 0; j < i; j++)
+      printf("-");
+   printf("^\n\n\n");
+   // æ ˆ
+   print(S);
+   getchar();
 }

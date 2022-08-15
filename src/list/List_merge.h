@@ -8,23 +8,23 @@
 
 #pragma once
 
-template <typename T> //ÓĞĞòÁĞ±íµÄ¹é²¢£ºµ±Ç°ÁĞ±íÖĞ×ÔpÆğµÄn¸öÔªËØ£¬ÓëÁĞ±íLÖĞ×ÔqÆğµÄm¸öÔªËØ¹é²¢
+template <typename T> //æœ‰åºåˆ—è¡¨çš„å½’å¹¶ï¼šå½“å‰åˆ—è¡¨ä¸­è‡ªpèµ·çš„nä¸ªå…ƒç´ ï¼Œä¸åˆ—è¡¨Lä¸­è‡ªqèµ·çš„mä¸ªå…ƒç´ å½’å¹¶
 ListNodePosi<T> List<T>::merge(ListNodePosi<T> p, int n, List<T> &L, ListNodePosi<T> q, int m)
 {
    // assert:  this.valid(p) && rank(p) + n <= size && this.sorted(p, n)
    //          L.valid(q) && rank(q) + m <= L._size && L.sorted(q, m)
-   // ×¢Òâ£ºÔÚ±»mergeSort()µ÷ÓÃÊ±£¬this == &L && rank(p) + n = rank(q)
-   ListNodePosi<T> pp = p->pred;           //¹é²¢Ö®ºóp¿ÉÄÜ²»ÔÙÖ¸ÏòÊ×½Úµã£¬¹ÊĞèÏÈ¼ÇÒä£¬ÒÔ±ãÔÚ·µ»ØÇ°¸üĞÂ
-   while ((0 < m) && (q != p))             // qÉĞÎ´³ö½ç£¨»òÔÚmergeSort()ÖĞ£¬pÒàÉĞÎ´³ö½ç£©Ö®Ç°
-      if ((0 < n) && (p->data <= q->data)) //ÈôpÉĞÎ´³ö½çÇÒv(p) <= v(q)£¬Ôò
+   // æ³¨æ„ï¼šåœ¨è¢«mergeSort()è°ƒç”¨æ—¶ï¼Œthis == &L && rank(p) + n = rank(q)
+   ListNodePosi<T> pp = p->pred;           //å½’å¹¶ä¹‹åpå¯èƒ½ä¸å†æŒ‡å‘é¦–èŠ‚ç‚¹ï¼Œæ•…éœ€å…ˆè®°å¿†ï¼Œä»¥ä¾¿åœ¨è¿”å›å‰æ›´æ–°
+   while ((0 < m) && (q != p))             // qå°šæœªå‡ºç•Œï¼ˆæˆ–åœ¨mergeSort()ä¸­ï¼Œpäº¦å°šæœªå‡ºç•Œï¼‰ä¹‹å‰
+      if ((0 < n) && (p->data <= q->data)) //è‹¥på°šæœªå‡ºç•Œä¸”v(p) <= v(q)ï¼Œåˆ™
       {
          p = p->succ;
          n--;
-      }    // pÖ±½ÓºóÒÆ£¬¼´Íê³É¹éÈë
-      else //·ñÔò£¬½«q×ªÒÆÖÁpÖ®Ç°£¬ÒÔÍê³É¹éÈë
+      }    // pç›´æ¥åç§»ï¼Œå³å®Œæˆå½’å…¥
+      else //å¦åˆ™ï¼Œå°†qè½¬ç§»è‡³pä¹‹å‰ï¼Œä»¥å®Œæˆå½’å…¥
       {
          insert(L.remove((q = q->succ)->pred), p);
          m--;
       }
-   return pp->succ; //¸üĞÂµÄÊ×½Úµã
+   return pp->succ; //æ›´æ–°çš„é¦–èŠ‚ç‚¹
 }

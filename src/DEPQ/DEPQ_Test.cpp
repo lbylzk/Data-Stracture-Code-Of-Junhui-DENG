@@ -13,59 +13,112 @@
 #include <windows.h>
 
 /******************************************************************************************
- * Õë¶Ô»ùÓÚÁĞ±í¡¢ÏòÁ¿ÒÔ¼°×óÊ½¶ÑÊµÏÖµÄÓÅÏÈ¼¶¶ÓÁĞ£¬×ö¹ı³ÌÍ³Ò»µÄ²âÊÔ
+ * é’ˆå¯¹åŸºäºåˆ—è¡¨ã€å‘é‡ä»¥åŠå·¦å¼å †å®ç°çš„ä¼˜å…ˆçº§é˜Ÿåˆ—ï¼Œåšè¿‡ç¨‹ç»Ÿä¸€çš„æµ‹è¯•
  ******************************************************************************************/
-void verifySMMH( SMMH<int> H ) {
-   int s = H.size(); Rank k = 0;
-   while ( ++k < s ) {
-      if ( isLC(k) && sib(k) < s  &&  H[k] > H[sib(k)] ) break; //Property #0
-      if ( isLC(k) && lc(k) < s && H[k] > H[lc(k)] ) break; //Property #1
-      if ( isLC(k) && ln(k) < s && H[k] > H[ln(k)] ) break;
-      if ( isRC(k) && rc(k) < s && H[k] < H[rc(k)] ) break; //Property #2
-      if ( isRC(k) && rn(k) < s && H[k] < H[rn(k)] ) break;
+void verifySMMH(SMMH<int> H)
+{
+   int s = H.size();
+   Rank k = 0;
+   while (++k < s)
+   {
+      if (isLC(k) && sib(k) < s && H[k] > H[sib(k)])
+         break; // Property #0
+      if (isLC(k) && lc(k) < s && H[k] > H[lc(k)])
+         break; // Property #1
+      if (isLC(k) && ln(k) < s && H[k] > H[ln(k)])
+         break;
+      if (isRC(k) && rc(k) < s && H[k] < H[rc(k)])
+         break; // Property #2
+      if (isRC(k) && rn(k) < s && H[k] < H[rn(k)])
+         break;
    }
-   if ( k < s ) { print(H); printf("SMMP invalid at H[%d] = %d\n", k, H[k]); exit(-1); }
+   if (k < s)
+   {
+      print(H);
+      printf("SMMP invalid at H[%d] = %d\n", k, H[k]);
+      exit(-1);
+   }
 }
 
-void testSMMH( int n ) {
-   SMMH<int> H; //init an empty DEPQ implemented as an SMMH
-   /*DSA*/ print(H); printf("\n");
-   while ( H.size() < n ) { //Ëæ»ú²âÊÔ
-      if ( dice ( 100 ) < 70 ) { //insert with a prob. of 70%
-         int e = dice ( 7 * n ); /*DSA*/printf ( "Inserting" ); print ( e ); printf ( " ...\n" );
-         H.insert ( e ); /*DSA*/printf ( "Insertion done\n" );
-      } else { //delMin or delMax with a prob. of 15% resp.
-         if ( 1 < H.size() )
-            if ( dice( 100 ) < 50 ) { /*DSA*/printf ( "Deleting MIN ...\n" );
-               int e = H.delMin();/*DSA*/printf ( "delMIN done with" ); print ( e ); printf ( "\n" );
-            } else {                  /*DSA*/printf ( "Deleting MAX ...\n" );
-               int e = H.delMax();/*DSA*/printf ( "delMAX done with" ); print ( e ); printf ( "\n" );
-            }
-      }  /*DSA*/ /* print(H); */ printf("\n");
-      verifySMMH( H );
-   }
-   /*DSA*/printf ( "Purge by delMIN/delMAX ...\n" );
-   while ( 1 < H.size() ) { //delMin or delMax with a prob. of 50% resp.
-      if ( dice( 100 ) < 50 ) {
-         int e = H.delMin(); /*DSA*/ print ( e ); printf("\n"); //print ( H );
-      } else {
-         int e = H.delMax(); /*DSA*/ printf("\t\t\t"); print ( e ); printf("\n"); //print ( H );
+void testSMMH(int n)
+{
+   SMMH<int> H; // init an empty DEPQ implemented as an SMMH
+   /*DSA*/ print(H);
+   printf("\n");
+   while (H.size() < n)
+   { //éšæœºæµ‹è¯•
+      if (dice(100) < 70)
+      {                       // insert with a prob. of 70%
+         int e = dice(7 * n); /*DSA*/
+         printf("Inserting");
+         print(e);
+         printf(" ...\n");
+         H.insert(e); /*DSA*/
+         printf("Insertion done\n");
       }
-      verifySMMH( H );
-      if ( H.size() < 16 ) { print(H); printf("\n"); }
+      else
+      { // delMin or delMax with a prob. of 15% resp.
+         if (1 < H.size())
+            if (dice(100) < 50)
+            { /*DSA*/
+               printf("Deleting MIN ...\n");
+               int e = H.delMin(); /*DSA*/
+               printf("delMIN done with");
+               print(e);
+               printf("\n");
+            }
+            else
+            { /*DSA*/
+               printf("Deleting MAX ...\n");
+               int e = H.delMax(); /*DSA*/
+               printf("delMAX done with");
+               print(e);
+               printf("\n");
+            }
+      } /*DSA*/ /* print(H); */
+      printf("\n");
+      verifySMMH(H);
+   }
+   /*DSA*/ printf("Purge by delMIN/delMAX ...\n");
+   while (1 < H.size())
+   { // delMin or delMax with a prob. of 50% resp.
+      if (dice(100) < 50)
+      {
+         int e = H.delMin(); /*DSA*/
+         print(e);
+         printf("\n"); // print ( H );
+      }
+      else
+      {
+         int e = H.delMax(); /*DSA*/
+         printf("\t\t\t");
+         print(e);
+         printf("\n"); // print ( H );
+      }
+      verifySMMH(H);
+      if (H.size() < 16)
+      {
+         print(H);
+         printf("\n");
+      }
    }
 }
 
 /******************************************************************************************
- * ÓÅÏÈ¼¶¶ÓÁĞ²âÊÔ
+ * ä¼˜å…ˆçº§é˜Ÿåˆ—æµ‹è¯•
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   if ( 2 > argc ) { printf ( "Usage: %s <size of test>\a\a\n", argv[0] ); return 1; }
-   srand ( ( unsigned int ) time ( NULL ) );
+int main(int argc, char *argv[])
+{
+   if (2 > argc)
+   {
+      printf("Usage: %s <size of test>\a\a\n", argv[0]);
+      return 1;
+   }
+   srand((unsigned int)time(NULL));
 #if defined(DSA_DEPQ_SMMH)
-   testSMMH( atoi ( argv[1] ) ); //´ÊÌõÀàĞÍ¿ÉÔÚ´ËÖ¸¶¨
+   testSMMH(atoi(argv[1])); //è¯æ¡ç±»å‹å¯åœ¨æ­¤æŒ‡å®š
 #else
-   printf ( "PQ type not defined yet\n" );
+   printf("PQ type not defined yet\n");
 #endif
    return 0;
 }

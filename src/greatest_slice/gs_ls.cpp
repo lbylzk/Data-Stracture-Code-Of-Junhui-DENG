@@ -1,11 +1,22 @@
 extern int s_lo, s_hi;
 
-int gs_LS( int A[], int n ) { //É¨Ãè²ßÂÔ£ºO(n)
+int gs_LS(int A[], int n)
+{ //æ‰«æç­–ç•¥ï¼šO(n)
    int gs = A[0], s = 0, i = n, j = n;
-   while ( 0 < i-- ) { //ÔÚµ±Ç°Çø¼ä[i,j)ÄÚ
-      s += A[i]; //µİÔöµØÀÛ¼Æ×ÜºÍ
-      if ( gs < s ) { gs = s; s_lo = i; s_hi = j; } //ÔñÓÅ¡¢¸üĞÂ
-      if ( s <= 0 ) { s = 0; j = i; } //¼ô³ı¸ººÍºó×º
+   while (0 < i--)
+   {             //åœ¨å½“å‰åŒºé—´[i,j)å†…
+      s += A[i]; //é€’å¢åœ°ç´¯è®¡æ€»å’Œ
+      if (gs < s)
+      {
+         gs = s;
+         s_lo = i;
+         s_hi = j;
+      } //æ‹©ä¼˜ã€æ›´æ–°
+      if (s <= 0)
+      {
+         s = 0;
+         j = i;
+      } //å‰ªé™¤è´Ÿå’Œåç¼€
    }
    return gs;
 }

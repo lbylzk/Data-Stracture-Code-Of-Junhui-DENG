@@ -8,5 +8,5 @@
 
 #pragma once
 
-#include "PQ_LEFTHeap/PQ_LeftHeap.h" //用PQ_LeftHeap实现
-using HuffForest = PQ_LeftHeap<HuffTree*>; //Huffman森林
+#include "PQ_LEFTHeap/PQ_LeftHeap.h"        //鐢≒Q_LeftHeap瀹炵幇
+using HuffForest = PQ_LeftHeap<HuffTree *>; // Huffman妫灄

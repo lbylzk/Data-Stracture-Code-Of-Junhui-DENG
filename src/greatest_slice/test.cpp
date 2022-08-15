@@ -4,32 +4,42 @@
 
 int s_lo, s_hi;
 
-int gs_LS( int A[], int n ); //É¨Ãè²ßÂÔ£ºO(n)
-int gs_DC( int A[], int lo, int hi ); //·ÖÖÎ²ßÂÔ£ºO(n*logn)
-int gs_IC( int A[], int n ); //µİÔö²ßÂÔ£ºO(n^2)
-int gs_BF( int A[], int n ); //ÂùÁ¦²ßÂÔ£ºO(n^3)
+int gs_LS(int A[], int n);          //æ‰«æç­–ç•¥ï¼šO(n)
+int gs_DC(int A[], int lo, int hi); //åˆ†æ²»ç­–ç•¥ï¼šO(n*logn)
+int gs_IC(int A[], int n);          //é€’å¢ç­–ç•¥ï¼šO(n^2)
+int gs_BF(int A[], int n);          //è›®åŠ›ç­–ç•¥ï¼šO(n^3)
 
 /******************************************************************************************
- * ×î´óÆ¬¶Î
+ * æœ€å¤§ç‰‡æ®µ
  ******************************************************************************************/
-int main ( int argc, char* argv[] ) {
-   int* A; int n;
-   if ( 1 < argc ) { //ÃüÁîĞĞÖ¸¶¨£º-123 89 -86 -50 -63 88 -56 -5 31 112 106 72 17 127 -92 76 124 24 -54 19 -93 121 -28 11 24 -56 92 57 -16
-      n = argc-1; A = new int[n];
-      for ( int i = 0; i < n; i++ )
-         A[i] = atoi( argv[i+1] );
-   } else { //Ëæ»úÉú³É
-      srand ( ( unsigned int ) time ( NULL ) );
-      n = rand() % 128; A = new int[n];
-      for ( int i = 0; i < n; i++ )
+int main(int argc, char *argv[])
+{
+   int *A;
+   int n;
+   if (1 < argc)
+   { //å‘½ä»¤è¡ŒæŒ‡å®šï¼š-123 89 -86 -50 -63 88 -56 -5 31 112 106 72 17 127 -92 76 124 24 -54 19 -93 121 -28 11 24 -56 92 57 -16
+      n = argc - 1;
+      A = new int[n];
+      for (int i = 0; i < n; i++)
+         A[i] = atoi(argv[i + 1]);
+   }
+   else
+   { //éšæœºç”Ÿæˆ
+      srand((unsigned int)time(NULL));
+      n = rand() % 128;
+      A = new int[n];
+      for (int i = 0; i < n; i++)
          A[i] = rand() % 128 - rand() % 96;
    }
-   for ( int i = 0; i < n; i++ )
+   for (int i = 0; i < n; i++)
       printf("%3d:%4d\n", i, A[i]);
-   printf( "GreatestSlice by Linear Scan:\t\t%d", gs_LS( A, n ) ); printf( " @[%d,%d)\n", s_lo, s_hi );
-   printf( "GreatestSlice by Divide-And-Conquer:\t%d\n", gs_DC( A, 0, n ) );
-   printf( "GreatestSlice by Incremental:\t\t%d", gs_IC( A, n ) ); printf( " @[%d,%d)\n", s_lo, s_hi );
-   printf( "GreatestSlice by Brute-Force:\t\t%d", gs_BF( A, n ) ); printf( " @[%d,%d)\n", s_lo, s_hi );
-   delete [] A;
+   printf("GreatestSlice by Linear Scan:\t\t%d", gs_LS(A, n));
+   printf(" @[%d,%d)\n", s_lo, s_hi);
+   printf("GreatestSlice by Divide-And-Conquer:\t%d\n", gs_DC(A, 0, n));
+   printf("GreatestSlice by Incremental:\t\t%d", gs_IC(A, n));
+   printf(" @[%d,%d)\n", s_lo, s_hi);
+   printf("GreatestSlice by Brute-Force:\t\t%d", gs_BF(A, n));
+   printf(" @[%d,%d)\n", s_lo, s_hi);
+   delete[] A;
    return 0;
 }

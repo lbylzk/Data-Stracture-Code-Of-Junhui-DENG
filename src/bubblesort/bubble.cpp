@@ -6,19 +6,25 @@
  * Copyright (c) 2003-2021. All rights reserved.
  ******************************************************************************************/
 
-/*DSA*/#include "_share/util.h"
-/*DSA*/#include "UniPrint/print_int_array.h"
+/*DSA*/ #include "_share/util.h"
+/*DSA*/ #include "UniPrint/print_int_array.h"
 
-void bubblesort ( int A[], int n ) { //ÆğÅİÅÅĞòËã·¨£¨°æ±¾0£©£º0 <= n
-   /*DSA*/int cmp = 0, swp = 0;
-   while ( n-- ) { //ÔÚÉĞÎ´È·ÈÏÒÑÈ«¾ÖÅÅĞòÖ®Ç°£¬ÖğÌË½øĞĞÉ¨Ãè½»»»
-      for ( int i = 0; i < n; i++ ) { //×Ô×óÏòÓÒÖğ¶Ô¼ì²éµ±Ç°·¶Î§A[0, n)ÄÚµÄ¸÷ÏàÁÚÔªËØ
-         if ( A[i] > A[i+1] ) { //Ò»µ©A[i]ÓëA[i+1]ÄæĞò£¬Ôò
-            swap ( A[i], A[i+1] ); //½»»»Ö®£¬²¢
-            /*DSA*/swp++; printf ( "%3d: ", n ); print ( A, n, i, i + 2 );
+void bubblesort(int A[], int n)
+{ //èµ·æ³¡æ’åºç®—æ³•ï¼ˆç‰ˆæœ¬0ï¼‰ï¼š0 <= n
+   /*DSA*/ int cmp = 0, swp = 0;
+   while (n--)
+   { //åœ¨å°šæœªç¡®è®¤å·²å…¨å±€æ’åºä¹‹å‰ï¼Œé€è¶Ÿè¿›è¡Œæ‰«æäº¤æ¢
+      for (int i = 0; i < n; i++)
+      { //è‡ªå·¦å‘å³é€å¯¹æ£€æŸ¥å½“å‰èŒƒå›´A[0, n)å†…çš„å„ç›¸é‚»å…ƒç´ 
+         if (A[i] > A[i + 1])
+         {                        //ä¸€æ—¦A[i]ä¸A[i+1]é€†åºï¼Œåˆ™
+            swap(A[i], A[i + 1]); //äº¤æ¢ä¹‹ï¼Œå¹¶
+            /*DSA*/ swp++;
+            printf("%3d: ", n);
+            print(A, n, i, i + 2);
          }
-         /*DSA*/cmp++;
+         /*DSA*/ cmp++;
       }
    }
-   /*DSA*/printf ( "#comparison = %d, #swap = %d\n", cmp, swp );
-} //ÂùÁ¦Ëã·¨£¬²»ÄÜ¼°Ê±ÌáÇ°ÍË³ö£¬×ÜÊÇ±ØĞë×ön-1ÌËÉ¨Ãè½»»»
+   /*DSA*/ printf("#comparison = %d, #swap = %d\n", cmp, swp);
+} //è›®åŠ›ç®—æ³•ï¼Œä¸èƒ½åŠæ—¶æå‰é€€å‡ºï¼Œæ€»æ˜¯å¿…é¡»åšn-1è¶Ÿæ‰«æäº¤æ¢

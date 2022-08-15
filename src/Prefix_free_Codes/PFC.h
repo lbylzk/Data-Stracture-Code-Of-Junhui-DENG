@@ -8,20 +8,20 @@
 
 #pragma once
 
-/*DSA*/#include "_share/util.h"
-/*DSA*/#include "UniPrint/print.h"
+#include "_share/util.h"
+#include "UniPrint/print.h"
 
 /******************************************************************************************
- * PFC±àÂëÊ¹ÓÃµÄÊı¾İ½á¹¹
+ * PFCç¼–ç ä½¿ç”¨çš„æ•°æ®ç»“æ„
  ******************************************************************************************/
-#include "BinTree/BinTree.h" //ÓÃBinTreeÊµÏÖPFCÊ÷
-using PFCTree = BinTree<char>; //PFCÊ÷
+#include "BinTree/BinTree.h"   //ç”¨BinTreeå®ç°PFCæ ‘
+using PFCTree = BinTree<char>; // PFCæ ‘
 
-#include "Vector/Vector.h" //ÓÃVectorÊµÏÖPFCÉ­ÁÖ
-using PFCForest = Vector<PFCTree*>; //PFCÉ­ÁÖ
+#include "Vector/Vector.h"           //ç”¨Vectorå®ç°PFCæ£®æ—
+using PFCForest = Vector<PFCTree *>; // PFCæ£®æ—
 
-#include "Bitmap/Bitmap.h" //Ê¹ÓÃÎ»Í¼½á¹¹ÊµÏÖ¶ş½øÖÆ±àÂë´®
-#include "Skiplist/Skiplist.h" //ÒıÈëSkiplistÊ½´Êµä½á¹¹ÊµÏÖ
-using PFCTable = Skiplist<char, char*>; //PFC±àÂë±í£¬´ÊÌõ¸ñÊ½Îª£º(key = ×Ö·û, value = ±àÂë´®)
+#include "Bitmap/Bitmap.h"               //ä½¿ç”¨ä½å›¾ç»“æ„å®ç°äºŒè¿›åˆ¶ç¼–ç ä¸²
+#include "Skiplist/Skiplist.h"           //å¼•å…¥Skiplistå¼è¯å…¸ç»“æ„å®ç°
+using PFCTable = Skiplist<char, char *>; // PFCç¼–ç è¡¨ï¼Œè¯æ¡æ ¼å¼ä¸ºï¼š(key = å­—ç¬¦, value = ç¼–ç ä¸²)
 
-#define  N_CHAR  (0x80 - 0x20) //Ö»¿¼ÂÇ¿É´òÓ¡×Ö·û
+#define N_CHAR (0x80 - 0x20) //åªè€ƒè™‘å¯æ‰“å°å­—ç¬¦
